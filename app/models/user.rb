@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :statuses
   has_many :merchants
-  has_many :credits
 
   def  full_name
   	first_name + " " + last_name

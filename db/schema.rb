@@ -11,24 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140128025604) do
-
-  create_table "credits", :force => true do |t|
-    t.integer  "amount"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "user_id"
-    t.integer  "merchant_id"
-  end
+ActiveRecord::Schema.define(:version => 20140127203940) do
 
   create_table "merchants", :force => true do |t|
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.text     "name"
-    t.decimal  "geolat"
-    t.decimal  "geolon",     :precision => 3, :scale => 6
-    t.decimal  "geolat2"
-    t.decimal  "geolon2"
   end
 
   create_table "statuses", :force => true do |t|

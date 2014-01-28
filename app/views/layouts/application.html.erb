@@ -13,25 +13,27 @@
 
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 			      <span class="sr-only">Toggle navigation</span>
+			      
 			    </button>
-
 			    <a class="navbar-brand" href="#">Monedero</a>
-			    <p class="navbar-text navbar-right"><%= link_to "Creditos", credits_path %></p>
 			    <p class="navbar-text navbar-right"><%= link_to "Comercios", merchants_path %></p>
-			   
-			</div>
-			<div class = "navbar-header pull-right">
+			    <p class="navbar-text navbar-right"><%= link_to "Usuarios", users_path %></p>
 
+			    
+
+				
+			</div>
+			<ul class = "nav pull-right">
 				<% if user_signed_in? %> 
 				
-			    	<p><%= link_to current_user.full_name, edit_user_registration_path %></p>
-			    	<p><%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %></p>
-
-				<% else %>
-					<p class="navbar-text"><%= link_to "Registrarte", new_user_registration_path %></p>
-					<p class="navbar-text"><%= link_to "Iniciar Sesion", new_user_session_path %></p>
-				<% end %>
-			</div>
+			    	<li><%= link_to current_user.full_name, edit_user_registration_path %></li>
+			    	<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+				
+			<% else %>
+					<li><%= link_to "Register", new_user_registration_path %></li>
+					<li><%= link_to "Log In", new_user_session_path %></li>
+			<% end %>
+			</ul>
 		</div>
 
 	</nav>

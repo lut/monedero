@@ -1,37 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @merchant.name %></h1>
+
 <%= link_to 'Edit', edit_merchant_path(@merchant) %> |
 <%= link_to 'Back', merchants_path %>
-<br>
-
-<p>Latitud <%= @merchant.geolat2	%></p>
-<p>Longitud <%= @merchant.geolon2%></p>
-
-
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
-
-src="https://maps.google.es/maps?f=q&amp;
-
-source=s_q&amp;
-hl=es&amp;
-geocode=&amp;
-q=la+casa+de+los+abuelos&amp;
-aq=&amp;
-sll=21.166444,-86.825552&amp;
-sspn=0.024852,0.038581&amp;
-
-
-ie=UTF8&amp;
-hq=la+casa+de+los+abuelos&amp;
-hnear=&amp;
-ll=<%=@merchant.geolat2 %>,<%= @merchant.geolon2 %>&amp;
-spn=0.015764,0.03421&amp;
-t=m&amp;
-output=embed">
-
-</iframe>
-
-
-
-
