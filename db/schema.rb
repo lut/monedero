@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140128231538) do
+ActiveRecord::Schema.define(:version => 20140129011901) do
 
   create_table "credits", :force => true do |t|
     t.integer  "amount"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20140128231538) do
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
     t.integer  "merchant_id"
+    t.string   "credit_type"
   end
 
   create_table "merchants", :force => true do |t|

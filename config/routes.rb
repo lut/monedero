@@ -1,4 +1,7 @@
 Treebook::Application.routes.draw do
+  resources :credits
+
+
   resources :merchants
 
 

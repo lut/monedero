@@ -1,0 +1,17 @@
+<%= simple_form_for(@credit) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">  	    
+  	<%= f.input :merchant_id, collection: Merchant.all %>
+  	<%= f.input :user_id, collection: User.all, label_method: :full_name %>
+    <%= f.input :amount %>
+    <%= f.input :credit_type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+
+
