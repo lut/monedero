@@ -8,6 +8,7 @@ gem 'rails', '3.2.11'
 gem 'sqlite3'
 gem 'devise'
 gem 'simple_form'
+gem 'rqrcode'
 
 
 # Gems used only for assets and not required
