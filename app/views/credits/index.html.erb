@@ -1,21 +1,30 @@
-<h1>Listing credits</h1>
+<div class="page-header">
+  <h1>Crédito</h1>
+</div>
 
 <table>
   <tr>
-    <th>Amount</th>
-    <th>Type</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th margin: 10px >ID</th>
+    <th>Comercio</th>
+    <th>Usuario</th>
+    <th>Cantidad</th>
+    <th>Tipo</th>
+    <th>Fecha/Hora Creacion</th>
+
+    
   </tr>
 
 <% @credits.each do |credit| %>
   <tr>
+    <td><%= credit.id %></td>
+    <td><%= credit.merchant.name %></td>
+    <td><%= credit.user.full_name %></td>
     <td><%= credit.amount %></td>
     <td><%= credit.credit_type %></td>
+    <td><%= credit.created_at %></td>
     <td><%= link_to 'Show', credit %></td>
     <td><%= link_to 'Edit', edit_credit_path(credit) %></td>
-    <td><%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
   </tr>
 <% end %>
 </table>
