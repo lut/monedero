@@ -1,22 +1,27 @@
 <div class="page-header">
-  <h1>Todos los pinches Comercios</h1>
+  <h1>Todos los Comercios</h1>
 </div>
 
 <%= link_to "Crear nuevo comercio", new_merchant_path, class: "btn btn-default navbar-btn" %>
 
-<% @merchants.each do |merchant| %>
-  <div class="">
-    
-    <strong><%= merchant.name %> </strong>
-        
-    <div class="meta">
-      <%= link_to time_ago_in_words(merchant.created_at) + " ago", merchant %>|
-      
-      <span class="admin">
-        <%= link_to "Edit", edit_merchant_path(merchant) %> |
-        <%= link_to "Delete", merchant, method: :delete, data: { confirm: "Are you sure you want to delete this merchant?"} %>
-      </span>
+<table class="table table-striped table-hover">
+  <tr>
+    <th>ID</th>
+    <th>Comercio</th>
+    <th>Fecha/Hora Creacion</th>
+  </tr>
 
-    </div>
-  </div>
-<% end %>
+  <% @merchants.each do |merchant| %>
+  <tr>
+    <td><%= merchant.id %></td>
+    <td><%= link_to merchant.name, merchant %></td>
+    <td><%= merchant.created_at %> </td>
+    <td><%= link_to "Editar", edit_merchant_path(merchant) %> </td>
+    <td><%= link_to "Borrar", merchant, method: :delete, data: { confirm: "Estas seguro que deseas borrar al comercio?"} %></td>
+  </tr>
+
+  <% end %>
+
+</table>
+
+  
