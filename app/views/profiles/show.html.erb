@@ -1,18 +1,27 @@
 
 <div class='page-header'>
-
      <h1><%= @user.full_name %></h1>
-
 </div>
 
-<% if @credits %>
+<h3>Total de operaciones: <%= @credits.count %></h3>
+
+
+<table class="table table-striped table-hover">
+	<tr>
+		<th>ID</th>
+		<th>Comercio</th>
+		<th>Cantidad</th>
+		<th>Fecha/Hora Otorgado</th>
+	</tr>
+	
 	<% @credits.each do |credit| %>
-		<div class= "well">
-			<%= credit.amount %><hr />
-	    	<%= time_ago_in_words(credit.created_at) %> creditos
-		</div>
-    <% end %>
-<% end %>    
+	<tr>
+		<td><%= link_to credit.id, credit %></td>
+		<td><%= link_to credit.merchant.name, merchant_path(credit.merchant) %></td>
+		<td><%= credit.amount %></td>
+		<td><%= credit.created_at %></td>
+    	<td><%= link_to 'Borrar', credit, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+	</tr>
+	<% end %>   
 
-
-
+</table>
