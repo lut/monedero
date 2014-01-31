@@ -14,15 +14,15 @@
 
 <% @credits.each do |credit| %>
   <tr>
-    <td><%= credit.id %></td>
-    <td><%= credit.merchant.name %></td>
-    <td><%= credit.user.full_name %></td>
+    <td><%= link_to credit.id, credit %></td>
+    <td><%= link_to credit.merchant.name, merchant_path(credit.merchant) %></td>
+    <td><%= link_to credit.user.full_name, profile_path(credit.user) %></td>
     <td><%= credit.amount %></td>
     <td><%= credit.credit_type %></td>
     <td><%= credit.created_at %></td>
-    <td><%= link_to 'Show', credit %></td>
-    <td><%= link_to 'Edit', edit_credit_path(credit) %></td>
-    <td><%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+    <td><%= link_to 'Ver', credit %></td>
+    <td><%= link_to 'Editar', edit_credit_path(credit) %></td>
+    <td><%= link_to 'Borrar', credit, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
   </tr>
 <% end %>
 </table>

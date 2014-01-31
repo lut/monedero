@@ -13,7 +13,7 @@
 
   <% @merchants.each do |merchant| %>
   <tr>
-    <td><%= merchant.id %></td>
+    <td><%= link_to merchant.id, merchant %></td>
     <td><%= link_to merchant.name, merchant %></td>
     <td><%= merchant.created_at %> </td>
     <td><%= link_to "Editar", edit_merchant_path(merchant) %> </td>
