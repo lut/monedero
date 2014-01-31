@@ -14,8 +14,7 @@ class MerchantsController < ApplicationController
   # GET /merchants/1.json
   def show
     @merchant = Merchant.find(params[:id])
-
-    @qr = RQRCode::QRCode.new( 'my string to generate', :size => 4, :level => :h )
+    @qr = RQRCode::QRCode.new( @merchant.name, :size => 4, :level => :h )
 
 
     respond_to do |format|

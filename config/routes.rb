@@ -1,15 +1,12 @@
 Treebook::Application.routes.draw do
-  resources :credits
 
+root to: "statuses#index"
+resources :credits, :merchants, :statuses, :profiles
 
-  resources :merchants
+# get 'users/:id', to: 'users#show'
 
+devise_for :users
 
-  devise_for :users
-
-  resources :statuses
-
-  root to: 'statuses#index'
 
 
   # The priority is based upon order of creation:

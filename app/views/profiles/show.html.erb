@@ -1,0 +1,18 @@
+
+<div class='page-header'>
+
+     <h1><%= @user.full_name %></h1>
+
+</div>
+
+<% if @credits %>
+	<% @credits.each do |credit| %>
+		<div class= "well">
+			<%= credit.amount %><hr />
+	    	<%= time_ago_in_words(credit.created_at) %> creditos
+		</div>
+    <% end %>
+<% end %>    
+
+
+
