@@ -1,6 +1,7 @@
 class CreditsController < ApplicationController
   # GET /credits
   # GET /credits.json
+  
   def index
     @credits = Credit.all
 
