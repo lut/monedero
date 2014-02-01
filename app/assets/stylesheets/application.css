@@ -14,4 +14,9 @@
 
 body{
 	padding-top: 40px; 
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+	font-family: 'Lobster';
 }
