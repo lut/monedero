@@ -1,33 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @merchant.name %></h1>
+<div class='page-header'>
+     <h1><%= @merchant.name %></h1>
+</div>
 
-<p>Latitud: <%= @merchant.geolat %></p>
-<p>Longitud: <%= @merchant.geolon%></p>
-
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;aq=0&amp;oq=mara&amp;sll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;sspn=0.024855,0.038581&amp;doflg=ptk&amp;ie=UTF8&amp;hq=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;hnear=&amp;radius=15000&amp;t=m&amp;ll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;spn=0.007005,0.00912&amp;z=16&amp;output=embed&amp;iwloc=near"></iframe><br />
-
-<small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;aq=0&amp;oq=mara&amp;sll=21.151275,-86.857438&amp;sspn=0.024855,0.038581&amp;doflg=ptk&amp;ie=UTF8&amp;hq=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;hnear=&amp;radius=15000&amp;t=m&amp;ll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;spn=0.007005,0.00912&amp;z=16" style="color:#0000FF;text-align:left">Ver mapa más grande</a></small>
-
-hola
-
+<div class="row">
+  <div class="col-md-3">
+    <p>Latitud: <%= @merchant.geolat %></p>
+    <p>Longitud: <%= @merchant.geolon%></p>
+  </div>
+  <div class="col-md-2">
 <div class="qr">
+
         <table>
+
         <% @qr.modules.each_index do |x| %>
-          <tr>  
+
+          <tr> 
+
           <% @qr.modules.each_index do |y| %>
+
            <% if @qr.dark?(x,y) %>
+
             <td class="black"/>
+
            <% else %>
+
             <td class="white"/>
+
            <% end %>
+
           <% end %>
+
           </tr>
+
         <% end %>
+
         </table>
+
   </div>
 
 
+
+  </div>
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="col-md-7">
+    <iframe width="500" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;aq=0&amp;oq=mara&amp;sll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;sspn=0.024855,0.038581&amp;doflg=ptk&amp;ie=UTF8&amp;hq=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;hnear=&amp;radius=15000&amp;t=m&amp;ll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;spn=0.007005,0.00912&amp;z=16&amp;output=embed&amp;iwloc=near"></iframe><br />
+
+
+
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_merchant_path(@merchant) %> |
 <%= link_to 'Back', merchants_path %>
