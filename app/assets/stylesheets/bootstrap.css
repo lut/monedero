@@ -2686,6 +2686,38 @@ input[type="button"].btn-block {
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
+@font-face {
+  font-family: 'IcoMoon';
+  src: url('icons/icomoon.eot');
+  src: url('icons/icomoon.eot?#iefix') format('embedded-opentype'),
+       url('icons/icomoon.woff') format('woff'),
+       url('icons/icomoon.ttf') format('truetype'),
+       url('icons/icomoon.svg#icomoon') format('svg');
+}
+
+
+.icon-credit:before {
+  content: "\e600";
+  font-family: 'IcoMoon';
+  font-size: 40px;
+  padding-right: 10px;
+}
+
+.icon-flag:before {
+  content: "\e606";
+  font-family: 'IcoMoon';
+  font-size: 40px;
+  padding-right: 10px;
+}
+
+.icon-star:before {
+  content: "\e607";
+  font-family: 'IcoMoon';
+  font-size: 40px;
+  padding-right: 10px;
+}
+
+
 .glyphicon {
   position: relative;
   top: 1px;
