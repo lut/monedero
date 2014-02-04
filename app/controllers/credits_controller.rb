@@ -1,5 +1,5 @@
 class CreditsController < ApplicationController
-  before_filter :admin_user, only: [:new, :edit, :create, :update, :destroy]
+  before_filter :admin_user, only: [:new, :edit, :create, :update, :destroy, :index, :show]
 
 
   def index
