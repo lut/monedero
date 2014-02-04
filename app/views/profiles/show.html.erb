@@ -31,7 +31,7 @@
 	
 	<% @credits.each do |credit| %>
 	<tr>
-		<td><%= link_to credit.id, credit %></td>
+		<td><%= credit.id %></td>
 		<td><%= link_to credit.merchant.name, merchant_path(credit.merchant) %></td>
 		<td><%= credit.amount %></td>
 		<td><%= credit.created_at %></td>

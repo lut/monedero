@@ -1,7 +1,7 @@
 Treebook::Application.routes.draw do
 
-root to: "statuses#index"
-resources :credits, :merchants, :statuses, :profiles
+root to: "merchants#index"
+resources :credits, :merchants, :profiles
 
 # get 'users/:id', to: 'users#show'
 
