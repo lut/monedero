@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-	
+  	before_filter :admin_user, only: :index
+
 	def index
 	    @user = User.all
 
@@ -20,4 +21,15 @@ class ProfilesController < ApplicationController
     			render file 'public/404', status: 404, formats: [:html]
 			end
     end
+
+    private
+	  def admin_user
+	    redirect_to(root_path) unless current_user.admin?
+	  end
+
+	  def signed_in_user
+	    unless signed_in?
+	      redirect_to signin_url, notice: "Please sign in." 
+	  end
+	end
 end

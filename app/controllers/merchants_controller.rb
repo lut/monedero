@@ -1,6 +1,5 @@
 class MerchantsController < ApplicationController
-  # GET /merchants
-  # GET /merchants.json
+  before_filter :admin_user, only: [:new, :edit, :create, :update, :destroy]
   
   def index
     @merchants = Merchant.all
@@ -81,6 +80,17 @@ class MerchantsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to merchants_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
+
+    def signed_in_user
+      unless signed_in?
+        redirect_to signin_url, notice: "Please sign in." 
     end
   end
 

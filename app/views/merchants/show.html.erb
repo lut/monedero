@@ -52,6 +52,8 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_merchant_path(@merchant) %> |
+<% if current_user.try(:admin?) %>
+  <%= link_to 'Edit', edit_merchant_path(@merchant) %> |
+<% end %>
 <%= link_to 'Back', merchants_path %>
 

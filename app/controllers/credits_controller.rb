@@ -1,7 +1,7 @@
 class CreditsController < ApplicationController
-  # GET /credits
-  # GET /credits.json
-  
+  before_filter :admin_user, only: [:new, :edit, :create, :update, :destroy]
+
+
   def index
     @credits = Credit.all
 
@@ -81,4 +81,16 @@ class CreditsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
+
+    def signed_in_user
+      unless signed_in?
+        redirect_to signin_url, notice: "Please sign in." 
+    end
+  end
+
 end
