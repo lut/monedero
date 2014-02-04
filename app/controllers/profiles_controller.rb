@@ -16,6 +16,8 @@ class ProfilesController < ApplicationController
     	@user = User.find(params[:id])
     		if @user
     			@credits = @user.credits.all
+    			@qr = RQRCode::QRCode.new( @user.email, :size => 4, :level => :h )
+
     			render action: :show
     		else
     			render file 'public/404', status: 404, formats: [:html]
