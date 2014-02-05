@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140202175837) do
+ActiveRecord::Schema.define(:version => 20140205002701) do
 
   create_table "credits", :force => true do |t|
     t.integer  "amount"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20140202175837) do
     t.integer  "user_id"
     t.integer  "merchant_id"
     t.string   "credit_type"
+    t.text     "assigned_by"
   end
 
   create_table "merchants", :force => true do |t|

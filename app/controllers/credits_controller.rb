@@ -42,6 +42,7 @@ class CreditsController < ApplicationController
   # POST /credits.json
   def create
     @credit = Credit.new(params[:credit])
+    @credit.assigned_by = current_user.email
 
     respond_to do |format|
       if @credit.save
