@@ -1,7 +1,5 @@
 Treebook::Application.routes.draw do
 
-  devise_for :merchant_users
-
 root to: "merchants#index"
 resources :credits, :merchants, :profiles
 

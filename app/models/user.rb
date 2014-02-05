@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   					:first_name, :last_name, :profile_name, :admin
 
   # attr_accessible :title, :body
+  has_many :merchants
   has_many :credits
 
   def  full_name
