@@ -13,6 +13,7 @@
 			<th>Nombre</th>
 			<th>Mail</th>
 			<th>Admin</th>
+
 		</tr>
 		<% @user.each do |user| %>
 	
@@ -20,8 +21,8 @@
 			<td><%= link_to user.id, profile_path(user) %></td>
 			<td><%= link_to user.full_name, profile_path(user) %> </td>
 			<td><%= link_to user.email, profile_path(user) %> </td>
-			<td><%= link_to "Editar", edit_user_registration_path(user) %> </td>
    		 	<td><%= user.admin %></td>
+   		 	<td><%= link_to "Editar", edit_user_registration_path(user) %> </td>
 		</tr>
 
 	<% end %>
