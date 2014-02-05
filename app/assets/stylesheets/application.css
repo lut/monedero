@@ -20,3 +20,11 @@ body{
 h1 {
 	font-family: 'Lobster';
 }
+
+.alert {
+	margin-top: 20px;
+}
+
+.container {
+	margin-bottom: 90px;
+}

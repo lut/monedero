@@ -45,7 +45,7 @@ class CreditsController < ApplicationController
 
     respond_to do |format|
       if @credit.save
-        format.html { redirect_to @credit, notice: 'Credit was successfully created.' }
+        format.html { redirect_to @credit, notice: 'Credito creado exitosamente.' }
         format.json { render json: @credit, status: :created, location: @credit }
       else
         format.html { render action: "new" }
@@ -61,7 +61,7 @@ class CreditsController < ApplicationController
 
     respond_to do |format|
       if @credit.update_attributes(params[:credit])
-        format.html { redirect_to @credit, notice: 'Credit was successfully updated.' }
+        format.html { redirect_to @credit, notice: 'Credito actualizado exitosamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -89,7 +89,7 @@ class CreditsController < ApplicationController
 
     def signed_in_user
       unless signed_in?
-        redirect_to signin_url, notice: "Please sign in." 
+        redirect_to signin_url, notice: "Por favor inicia sesion." 
     end
   end
 

@@ -4,4 +4,7 @@ class Credit < ActiveRecord::Base
   belongs_to :user
   belongs_to :merchant
 
+  validates_presence_of :merchant, :user, :amount
+
+
 end

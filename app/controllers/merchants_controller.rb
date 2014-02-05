@@ -46,7 +46,7 @@ class MerchantsController < ApplicationController
 
     respond_to do |format|
       if @merchant.save
-        format.html { redirect_to @merchant, notice: 'Merchant was successfully created.' }
+        format.html { redirect_to @merchant, notice: 'Comercio creado exitosamente!' }
         format.json { render json: @merchant, status: :created, location: @merchant }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class MerchantsController < ApplicationController
 
     respond_to do |format|
       if @merchant.update_attributes(params[:merchant])
-        format.html { redirect_to @merchant, notice: 'Merchant was successfully updated.' }
+        format.html { redirect_to @merchant, notice: 'Comercio actualizado exitosamente' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -90,7 +90,7 @@ class MerchantsController < ApplicationController
 
     def signed_in_user
       unless signed_in?
-        redirect_to signin_url, notice: "Please sign in." 
+        redirect_to signin_url, notice: "Por favor inicia sesion." 
     end
   end
 
