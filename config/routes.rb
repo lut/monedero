@@ -5,8 +5,7 @@ resources :credits, :merchants, :profiles
 
 # get 'users/:id', to: 'users#show'
 
-devise_for :users
-
+devise_for :users, :merchant_users 
 
 
   # The priority is based upon order of creation:

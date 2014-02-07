@@ -1,0 +1,22 @@
+<h1>Listing merchant_users</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @merchant_users.each do |merchant_user| %>
+  <tr>
+    <td><%= merchant_user.id %> </td>
+    <td><%= link_to 'Show', merchant_user %></td>
+    <td><%= link_to 'Edit', edit_merchant_user_path(merchant_user) %></td>
+    <td><%= link_to 'Destroy', merchant_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Merchant user', new_merchant_user_path %>
