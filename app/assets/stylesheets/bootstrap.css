@@ -2717,6 +2717,13 @@ input[type="button"].btn-block {
   padding-right: 10px;
 }
 
+.icon-user:before {
+  content: "\e608";
+  font-family: 'IcoMoon';
+  font-size: 40px;
+  padding-right: 10px;
+}
+
 
 .glyphicon {
   position: relative;
