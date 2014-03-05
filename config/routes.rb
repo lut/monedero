@@ -2,6 +2,7 @@ Treebook::Application.routes.draw do
 
 root to: "merchants#index"
 resources :credits, :merchants, :profiles
+get 'qrcode/:id', to: 'profiles#qrcode', as: 'qrcode'
 
 # get 'users/:id', to: 'users#show'
 

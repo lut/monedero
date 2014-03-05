@@ -24,6 +24,18 @@ class ProfilesController < ApplicationController
 			end
     end
 
+    def qrcode
+    	@user = User.find(params[:id])
+    		if @user
+    			@qr = RQRCode::QRCode.new( @user.email, :size => 4, :level => :h )
+
+    		else
+    			render file 'public/404', status: 404, formats: [:html]
+			end
+
+    end
+
+
     private
 	  def admin_user
 	    redirect_to(root_path) unless current_user.admin?
