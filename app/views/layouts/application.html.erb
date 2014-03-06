@@ -54,49 +54,53 @@
 
 	<% if user_signed_in? %> 
 		<% if current_user.try(:admin?) %>
-			<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-			<div class="btn-group btn-group-justified">
-	  			<div class="btn-group">
-	    			<%= link_to "Comercios", merchants_path, class: "icon-flag btn btn-default navbar-btn" %>
-	  			</div>
+				<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+					<div class="btn-group btn-group-justified">
+			  			<div class="btn-group">
+			    			<%= link_to "Comercios", merchants_path, class: "icon-flag btn btn-default navbar-btn" %>
+			  			</div>
 
-	  			 <div class="btn-group">
-					<%= link_to "Puntos", credits_path, class: "icon-credit btn btn-default navbar-btn" %>
-				</div>
+			  			 <div class="btn-group">
+							<%= link_to "Puntos", credits_path, class: "icon-credit btn btn-default navbar-btn" %>
+						</div>
 
-	  			<div class="btn-group">
-	    			<%= link_to "Usuarios", profiles_path, class: "icon-user btn btn-default navbar-btn" %>
-	  			</div>
-	  			
-			</div>
-			
-		</nav>
+			  			<div class="btn-group">
+			    			<%= link_to "Usuarios", profiles_path, class: "icon-user btn btn-default navbar-btn" %>
+			  			</div>
+					</div>
+				</nav>
+				<% else %>
+				<%if current_user.try(:merchant?) %>
+					<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+						<div class="btn-group btn-group-justified">		
+				  			<div class="btn-group">
+				    			<%= link_to "Usuarios", profiles_path, class: "icon-user btn btn-default navbar-btn" %>
+				  			</div>
+				  			 <div class="btn-group">
+								<%= link_to "Puntos", credits_path, class: "icon-credit btn btn-default navbar-btn" %>
+							</div>
+						</div>
+					</nav>
+				<% else %>
 
-			<% else %>
+					<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+						<div class="btn-group btn-group-justified">
+			  				<div class="btn-group">
+			    				<%= link_to "Comercios", merchants_path, class: "icon-flag btn btn-default navbar-btn" %>
+			  				</div>
+				 			 <div class="btn-group">
+								<%= link_to "QR Code", qrcode_path(current_user), class: "icon-qrcode btn btn-default navbar-btn" %>
+							</div>
 
-			<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-			<div class="btn-group btn-group-justified">
-	  			
-	  			<div class="btn-group">
-	    			<%= link_to "Comercios", merchants_path, class: "icon-flag btn btn-default navbar-btn" %>
-	  			</div>
-	 			 <div class="btn-group">
-					<%= link_to "QR Code", qrcode_path(current_user), class: "icon-qrcode btn btn-default navbar-btn" %>
-				</div>
+							<div class="btn-group">
+				    			<%= link_to "Credito", profile_path(current_user), class: "icon-credit btn btn-default navbar-btn" %>
+				  			</div>
+						</div>
+					</nav>
 
-				<div class="btn-group">
-	    			<%= link_to "Credito", profile_path(current_user), class: "icon-credit btn btn-default navbar-btn" %>
-	  			</div>
-			</div>
-			
-		</nav>
-
-
-		<% end %>
-		
-
-
-		
+				<% end %>
+			<% end %>
+				
 	<% end %>
 </body>
 </html>

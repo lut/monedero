@@ -1,5 +1,5 @@
 class CreditsController < ApplicationController
-  before_filter :admin_user, only: [:new, :edit, :create, :update, :destroy, :index, :show]
+  before_filter :adminOrMerchant_user, only: [:new, :edit, :create, :update, :destroy, :index, :show]
 
 
   def index
@@ -84,8 +84,8 @@ class CreditsController < ApplicationController
   end
 
   private
-    def admin_user
-      redirect_to(root_path) unless current_user.admin?
+    def adminOrMerchant_user
+      redirect_to(root_path) unless (current_user.admin? | current_user.merchant?)
     end
 
     def signed_in_user

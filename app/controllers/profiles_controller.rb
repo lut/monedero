@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  	before_filter :admin_user, only: :index
+  	before_filter :adminOrMerchant_user, only: :index
 
 	def index
 	    @user = User.all
@@ -37,8 +37,8 @@ class ProfilesController < ApplicationController
 
 
     private
-	  def admin_user
-	    redirect_to(root_path) unless current_user.admin?
+	  def adminOrMerchant_user
+	    redirect_to(root_path) unless (current_user.admin? | current_user.merchant?)
 	  end
 
 	  def signed_in_user
