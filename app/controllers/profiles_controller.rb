@@ -38,7 +38,7 @@ class ProfilesController < ApplicationController
 
     private
 	  def adminOrMerchant_user
-	    redirect_to(root_path) unless (current_user.admin? | current_user.merchant?)
+	    redirect_to(root_path) unless (current_user.admin? | current_user.isMerchantUser?)
 	  end
 
 	  def signed_in_user

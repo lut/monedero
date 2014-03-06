@@ -70,7 +70,7 @@
 					</div>
 				</nav>
 				<% else %>
-				<%if current_user.try(:merchant?) %>
+				<%if current_user.try(:isMerchantUser?) %>
 					<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
 						<div class="btn-group btn-group-justified">		
 				  			<div class="btn-group">

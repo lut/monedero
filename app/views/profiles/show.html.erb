@@ -3,7 +3,7 @@
      <h1><%= @user.full_name %></h1>
 </div>
 
-<% if current_user.try(:admin?)|current_user.try(:merchant?)  %>
+<% if current_user.try(:admin?)|current_user.try(:isMerchantUser?)  %>
 	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="btn-group btn-group-justified">
 		  			
