@@ -43,6 +43,10 @@ class CreditsController < ApplicationController
   def create
     @credit = Credit.new(params[:credit])
     @credit.assigned_by = current_user.email
+      if current_user.try(:admin?) 
+        else
+        @credit.merchant_id = 5
+      end
 
     respond_to do |format|
       if @credit.save
