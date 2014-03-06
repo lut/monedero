@@ -8,7 +8,7 @@
 					<th>ID</th>
 					<th>Nombre</th>
 					<th>Mail</th>
-					<th>Merchant</th>
+					<th>Is Merchant User?</th>
 					<th>Merchant Name</th>
 					<th>Admin</th>
 					<th>Editar</th>
@@ -19,7 +19,7 @@
 					<td><%= link_to user.id, profile_path(user) %></td>
 					<td><%= link_to user.full_name, profile_path(user) %> </td>
 					<td><%= link_to user.email, profile_path(user) %> </td>
-		   		 	<td><%= user.merchant %></td>
+		   		 	<td><%= user.isMerchantUser %></td>
 		   		 	<td><% if user.merchant_id!='' %> <%= user.merchant_id %> <% else %><% end %>
 
 		   		 	</td>

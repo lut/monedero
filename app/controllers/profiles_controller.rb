@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
     	@user = User.find(params[:id])
     		if @user
     			@credits = @user.credits.all
-    			@qr = RQRCode::QRCode.new( @user.email, :size => 4, :level => :h )
+    			@qr = RQRCode::QRCode.new( 'http://0.0.0.0:3000/profiles/'+@user.id.to_s, :size => 4, :level => :h )
 
     			render action: :show
     		else
@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
     def qrcode
     	@user = User.find(params[:id])
     		if @user
-    			@qr = RQRCode::QRCode.new( @user.email, :size => 4, :level => :h )
+                @qr = RQRCode::QRCode.new( 'http://0.0.0.0:3000/profiles/'+@user.id.to_s, :size => 4, :level => :h )
 
     		else
     			render file 'public/404', status: 404, formats: [:html]
