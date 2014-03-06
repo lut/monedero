@@ -2703,6 +2703,20 @@ input[type="button"].btn-block {
   padding-right: 10px;
 }
 
+.icon-plus:before {
+  content: "\e609";
+  font-family: 'IcoMoon';
+  font-size: 40px;
+  padding-right: 10px;
+}
+
+.icon-minus:before {
+  content: "\e60a";
+  font-family: 'IcoMoon';
+  font-size: 40px;
+  padding-right: 10px;
+}
+
 .icon-qrcode:before {
   content: "\e602";
   font-family: 'IcoMoon';

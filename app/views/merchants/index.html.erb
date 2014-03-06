@@ -8,14 +8,12 @@
 
 <table class="table table-striped table-hover">
   <tr>
-    <th>ID</th>
     <th>Comercio</th>
     <th>Fecha/Hora Creacion</th>
   </tr>
 
   <% @merchants.each do |merchant| %>
   <tr>
-    <td><%= link_to merchant.id, merchant %></td>
     <td><%= link_to merchant.name, merchant %></td>
     <td><%= merchant.created_at %> </td>
     <% if current_user.try(:admin?) %>
