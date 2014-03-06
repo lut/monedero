@@ -45,7 +45,7 @@ class CreditsController < ApplicationController
     @credit.assigned_by = current_user.email
       if current_user.try(:admin?) 
         else
-        @credit.merchant_id = 5
+        @credit.merchant_id = current_user.merchant_id
       end
 
     respond_to do |format|

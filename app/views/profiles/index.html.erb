@@ -8,9 +8,10 @@
 					<th>ID</th>
 					<th>Nombre</th>
 					<th>Mail</th>
-					<th>Editar</th>
 					<th>Merchant</th>
+					<th>Merchant Name</th>
 					<th>Admin</th>
+					<th>Editar</th>
 				</tr>
 				<% @user.each do |user| %>
 			
@@ -18,9 +19,13 @@
 					<td><%= link_to user.id, profile_path(user) %></td>
 					<td><%= link_to user.full_name, profile_path(user) %> </td>
 					<td><%= link_to user.email, profile_path(user) %> </td>
-					<td><%= link_to "Editar", edit_user_registration_path(user) %> </td>
 		   		 	<td><%= user.merchant %></td>
+		   		 	<td><% if user.merchant_id!='' %> <%= user.merchant_id %> <% else %><% end %>
+
+		   		 	</td>
 		   		 	<td><%= user.admin %></td>
+		   		 	<td><%= link_to "Editar", edit_user_registration_path(user) %> </td>
+
 				</tr>
 
 			<% end %>
