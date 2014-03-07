@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20140306145800) do
     t.datetime "updated_at",                               :null => false
     t.text     "name"
     t.decimal  "geolat"
-    t.decimal  "geolon",     :precision => 6, :scale => 3
+    t.decimal  "geolon",     :precision => 3, :scale => 6
     t.decimal  "geolat2"
     t.decimal  "geolon2"
   end
