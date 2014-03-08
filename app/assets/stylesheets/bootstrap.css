@@ -2706,14 +2706,14 @@ input[type="button"].btn-block {
 .icon-plus:before {
   content: "\e609";
   font-family: 'IcoMoon';
-  font-size: 40px;
+  font-size: 20px;
   padding-right: 10px;
 }
 
 .icon-minus:before {
   content: "\e60a";
   font-family: 'IcoMoon';
-  font-size: 40px;
+  font-size: 20px;
   padding-right: 10px;
 }
 
