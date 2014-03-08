@@ -1,8 +1,8 @@
 <%= simple_form_for(@merchant) do |f| %>
   <%= f.error_notification %>
-  <%= f.input :name %>
-  <%= f.input :geolat %>
-  <%= f.input :geolon %>
+  <%= f.input :name, label: 'Comercio', required: true, as: :string %>
+  <%= f.input :geolat, label: 'Latitud' %>
+  <%= f.input :geolon, label: 'Longitud' %>
 
 
   <div class="form-actions">
