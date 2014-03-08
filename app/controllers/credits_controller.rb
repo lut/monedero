@@ -3,7 +3,12 @@ class CreditsController < ApplicationController
 
 
   def index
-    @credits = Credit.all
+    if current_user.try(:admin?)
+      @credits = Credit.all
+      else
+        @credits = Credit.find(:all,:conditions=>{:merchant_id => current_user.merchant_id(&:merchant_id)})
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb
