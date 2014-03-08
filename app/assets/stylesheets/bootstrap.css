@@ -2695,11 +2695,38 @@ input[type="button"].btn-block {
        url('icons/icomoon.svg#icomoon') format('svg');
 }
 
+.icon-gift:before {
+  content: "\e60e";
+  font-family: 'IcoMoon';
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+.icon-exit:before {
+  content: "\e60f";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
 
 .icon-credit:before {
   content: "\e600";
   font-family: 'IcoMoon';
   font-size: 40px;
+  padding-right: 10px;
+}
+
+.icon-books:before {
+  content: "\e610";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-cog:before {
+  content: "\e611";
+  font-family: 'IcoMoon';
+  font-size: 15px;
   padding-right: 10px;
 }
 
