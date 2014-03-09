@@ -1,29 +1,29 @@
-<div class="page-header">
-  <h1>Todos los Comercios</h1>
-</div>
+<br><br><br>
 
 <% if current_user.try(:admin?) %>
-  <%= link_to "Crear nuevo comercio", new_merchant_path, class: "btn btn-default navbar-btn" %>
+  <div data-role="navbar">
+    <ul>
+      <li><%= link_to "Crear nuevo comercio", new_merchant_path, class: "ui-btn" %></li>
+    </ul> 
+  </div>
 <% end %>
 
-<table class="table table-striped table-hover">
-  <tr>
-    <th>Comercio</th>
-    <th>Fecha/Hora Creacion</th>
-  </tr>
+<div data-role="content">
+     
 
-  <% @merchants.each do |merchant| %>
-  <tr>
-    <td><%= link_to merchant.name, merchant %></td>
-    <td><%= merchant.created_at %> </td>
-    <% if current_user.try(:admin?) %>
-      <td><%= link_to "Editar", edit_merchant_path(merchant) %> </td>
-      <td><%= link_to "Borrar", merchant, method: :delete, data: { confirm: "Estas seguro que deseas borrar al comercio?"} %></td>
+    <ul data-role="listview">
+    <% @merchants.each do |merchant| %>
+    <li>
+        <%= link_to merchant_path(merchant) do %>
+        <h3><%= merchant.name %></h3><p><%= merchant.geolat %></p>
+        <% end %>
+    </li>
     <% end %>
-  </tr>
+    </ul>
+</div>
+<br><br><br><br>
 
-  <% end %>
 
-</table>
+
 
   

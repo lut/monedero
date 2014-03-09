@@ -1,10 +1,7 @@
-<% if current_user.try(:admin?) %>
-
-  <%= link_to "Otorgar credito", new_credit_path, class: "btn btn-default navbar-btn" %>
-<% end %>
+<br><br>
 
 <div data-role="content">
-    <ul data-role="listview" data-filter="true">
+    <ul data-role="listview">
     <% @credits.each do |credit| %>
     <li>
         <%= link_to credit_path(credit) do %>
