@@ -1,0 +1,13 @@
+Tue, 11 Mar 2014 17:44:05 -0600
+doc/README_FOR_APP	Sat, 25 Jan 2014 14:41:04 -0600
+app/controllers/application_controller.rb	Thu, 06 Feb 2014 21:59:53 -0600
+app/controllers/credits_controller.rb	Tue, 11 Mar 2014 15:59:49 -0600
+app/controllers/merchants_controller.rb	Mon, 10 Mar 2014 20:56:38 -0600
+app/controllers/profiles_controller.rb	Tue, 11 Mar 2014 12:23:56 -0600
+app/helpers/application_helper.rb	Tue, 04 Feb 2014 13:17:35 -0600
+app/helpers/credits_helper.rb	Tue, 28 Jan 2014 19:08:37 -0600
+app/helpers/merchants_helper.rb	Mon, 27 Jan 2014 14:01:56 -0600
+app/helpers/users_helper.rb	Thu, 30 Jan 2014 19:11:45 -0600
+app/models/credit.rb	Thu, 06 Mar 2014 12:12:52 -0600
+app/models/merchant.rb	Wed, 05 Mar 2014 20:42:10 -0600
+app/models/user.rb	Tue, 11 Mar 2014 13:42:46 -0600
