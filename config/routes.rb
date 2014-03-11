@@ -1,9 +1,11 @@
 Treebook::Application.routes.draw do
 
 root to: "merchants#index"
-resources :credits, :merchants, :profiles
-get 'qrcode/:id', to: 'profiles#qrcode', as: 'qrcode'
+resources :merchants, :credits, :profiles
 
+
+get 'qrcode/:id', to: 'profiles#qrcode', as: 'qrcode'
+get 'add_credit_to_user/:id', to: 'credits#new' 
 # get 'users/:id', to: 'users#show'
 
 devise_for :users

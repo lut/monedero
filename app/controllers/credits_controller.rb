@@ -31,6 +31,9 @@ class CreditsController < ApplicationController
   # GET /credits/new.json
   def new
     @credit = Credit.new
+    @credit.user_id = params[:id]
+    @user = User.find(params[:id])
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,11 +54,12 @@ class CreditsController < ApplicationController
       if current_user.try(:admin?) 
         else
         @credit.merchant_id = current_user.merchant_id
+
       end
 
     respond_to do |format|
       if @credit.save
-        format.html { redirect_to @credit, notice: 'Credito creado exitosamente.' }
+        format.html { redirect_to profile_path(@credit.user_id), notice: 'Credito creado exitosamente.' }
         format.json { render json: @credit, status: :created, location: @credit }
       else
         format.html { render action: "new" }
