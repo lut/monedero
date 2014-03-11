@@ -15,12 +15,9 @@ class ProfilesController < ApplicationController
 	def show
     	@user = User.find(params[:id])
     		if @user
-                if current_user.try(:admin?)
-                    @credits = Credit.find(:all,:conditions=>{:user_id => @user.id(&:user_id)})
-                    if current_user.try(:isMerchantUser?)
-                        @credits = Credit.find(:all,:conditions=> {:merchant_id => current_user.merchant_id(&:merchant_id)})
-                    end
-                end
+                
+                @credits = Credit.where(:user_id => @user.id)
+                
 
     			@qr = RQRCode::QRCode.new( 'http://sheltered-chamber-1367.herokuapp.com/profiles/'+@user.id.to_s, :size => 8, :level => :h )
 
