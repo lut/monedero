@@ -1,5 +1,5 @@
 <div data-role="header">
-	<h1><%= @user.full_name %></h1>
+	<h1><%= @user.first_name %></h1>
 </div>
 
 <%= simple_form_for(@credit) do |f| %>
@@ -7,7 +7,7 @@
 
   <div class="form-inputs">  	
   	<% if current_user.try(:admin?) %><%= f.input :merchant_id, collection: Merchant.all %> <% end %>
-  	<%= f.input :user_id, collection: User.all, label_method: :full_name,  :as => :hidden %>
+  	<%= f.input :user_id, collection: User.all, label_method: :first_name,  :as => :hidden %>
     <%= f.input :amount %>
   </div>
 

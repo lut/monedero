@@ -7,7 +7,7 @@
 <% @users.each do |user| %>
   <div class="">
     
-    <strong><%= user.full_name %> </strong>
+    <strong><%= user.first_name %> </strong>
         
     <div class="meta">
       <%= link_to time_ago_in_words(user.created_at) + " ago", user %>|

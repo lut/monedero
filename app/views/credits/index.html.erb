@@ -5,7 +5,7 @@
     <% @credits.each do |credit| %>
     <li>
         <%= link_to credit_path(credit) do %>
-        <h3><%= credit.user.full_name %></h3><p><%= credit.amount %></p>
+        <h3><%= credit.user.first_name %></h3><p><%= credit.amount %></p>
         <% end %>
     </li>
     <% end %>

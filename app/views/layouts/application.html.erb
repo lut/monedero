@@ -47,7 +47,7 @@
 	        <!-- User signed-in? -->
 	        <% if user_signed_in? %>     
 					<li class="dropdown">
-			            <a href="#" class="dropdown-toggle" data-toggle="dropdown"=><%= current_user.full_name%> <b class="caret"></b></a>
+			            <a href="#" class="dropdown-toggle" data-toggle="dropdown"=><%= current_user.first_name%> <b class="caret"></b></a>
 			              <ul class="dropdown-menu">
 			                <li><%= link_to "Ajustes", edit_user_registration_path, class: "icon-cog" %></li>
 			                <li><%= link_to "Términos y Condiciones", edit_user_registration_path, class: "icon-books" %></li>       
