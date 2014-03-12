@@ -2,18 +2,20 @@
 	<h1><%= @user.first_name %></h1>
 </div>
 
-<%= simple_form_for(@credit) do |f| %>
-  <%= f.error_notification %>
+<div data-role="content">
+  <%= simple_form_for(@credit, html: {class: "well"}) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">  	
-  	<% if current_user.try(:admin?) %><%= f.input :merchant_id, collection: Merchant.all %> <% end %>
-  	<%= f.input :user_id, collection: User.all, label_method: :first_name,  :as => :hidden %>
-    <%= f.input :amount %>
-  </div>
+    <div class="form-inputs">  	
+    	<% if current_user.try(:admin?) %><%= f.input :merchant_id, collection: Merchant.all %> <% end %>
+    	<%= f.input :user_id, collection: User.all, label_method: :first_name,  :as => :hidden %>
+      <%= f.input :amount %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
 
 

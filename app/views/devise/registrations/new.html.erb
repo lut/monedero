@@ -1,10 +1,11 @@
-<h2>Registro</h2>
+<div data-role="content">
+  <br><br><br>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= simple_form_for(resource, :as => resource_name, html: {class: "well"}, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
 
-  <div><%= f.label :first_name %><br>
+  <div><%= f.label :first_name, label: "Nombre" %>
   <%= f.text_field :first_name %></div>
 <!--
   <div><%= f.label :last_name %><br>
@@ -15,15 +16,19 @@
 
 -->
 
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
   <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password, label: "Contraseña"%>
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation, label: "Confirmar contraseña" %>
   <%= f.password_field :password_confirmation %></div>
 
   <div><%= f.submit "Registrarme" %></div>
 <% end %>
+
+</div>
+
+
 

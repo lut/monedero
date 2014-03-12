@@ -5,62 +5,63 @@
 	<div data-role="header">
 		<h1>Creditos otorgados</h1>
 	</div>
-
-	<table class="table table-striped table-hover">
-			<tr>
-				<th>ID</th>
-				<th>Cantidad</th>
-				<th>Usuario</th>
-				<th>Comercio</th>
-				<th>Fecha/Hora Otorgado</th>
-			</tr>
-			
-			<% @credits.each do |credit| %>
-			<tr>
-				<td><%= credit.id %></td>
-				<td><%= credit.amount %></td>
-				<td><%= credit.user_id %></td>
-				<td><%= credit.merchant_id %></td>
-				<td><%= credit.created_at %></td>
-			</tr>
-			<% end %>   
-	</table>
-	
-	<% if current_user.try(:isMerchantUser?) %>
-	
-		<br>
-		
-		<div data-role="header">
-			<h1>Creditos otorgados</h1>
-		</div>
-
+	<div data-role="content">
 		<table class="table table-striped table-hover">
 				<tr>
+					<th>ID</th>
 					<th>Cantidad</th>
+					<th>Usuario</th>
+					<th>Comercio</th>
 					<th>Fecha/Hora Otorgado</th>
 				</tr>
 				
 				<% @credits.each do |credit| %>
 				<tr>
+					<td><%= credit.id %></td>
 					<td><%= credit.amount %></td>
+					<td><%= credit.user_id %></td>
+					<td><%= credit.merchant_id %></td>
 					<td><%= credit.created_at %></td>
 				</tr>
 				<% end %>   
 		</table>
-
-	<% else %>
-
-		<div data-role="content">
-		    <ul data-role="listview">
-		    <% @credits.each do |credit| %>
-		    <li>
-		        <%= link_to credit_path(credit) do %>
-		        <h3><%= credit.user.first_name %></h3><p><%= credit.amount %></p>
-		        <% end %>
-		    </li>
-		    <% end %>
-		    </ul>
+	</div>
+<% end %>
+	
+<% if current_user.try(:isMerchantUser?) %>
+		<br>
+		<div data-role="header">
+			<h1>Creditos otorgados</h1>
 		</div>
 
-<% end %>
+		<div data-role="content">
+			<table class="table table-striped table-hover">
+					<tr>
+						<th>Cantidad</th>
+						<th>Fecha/Hora Otorgado</th>
+					</tr>
+					
+					<% @credits.each do |credit| %>
+					<tr>
+						<td><%= credit.amount %></td>
+						<td><%= credit.created_at %></td>
+					</tr>
+					<% end %>   
+			</table>
+		</div>
+
+		<% if not(current_user.try(:admin)) and not(current_user.try(:isMerchantUser))  %>
+
+			<div data-role="content">
+			    <ul data-role="listview">
+			    <% @credits.each do |credit| %>
+			    <li>
+			        <%= link_to credit_path(credit) do %>
+			        <h3><%= credit.user.first_name %></h3><p><%= credit.amount %></p>
+			        <% end %>
+			    </li>
+			    <% end %>
+			    </ul>
+			</div>
+		<% end %>
 <% end %>

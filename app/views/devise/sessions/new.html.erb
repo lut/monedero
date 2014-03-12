@@ -1,13 +1,14 @@
-<br><br><br>
 <div data-role="content">
+<br><br><br>
+
 		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: "well"}) do |f| %>
 		  
 		  <fieldset>
 		  <%= f.input :email %>
-		  <%= f.input :password %>
+		  <%= f.input :password, label: "Contraseña" %>
 
 		  <% if devise_mapping.rememberable? -%>
-		    <div><%= f.input :remember_me, as: :boolean %></div>
+		    <div><%= f.input :remember_me, as: :boolean, label: "Recordarme" %></div>
 		  <% end -%>
 
 		  <div><%= f.button :submit, "Iniciar sesión" %></div>
