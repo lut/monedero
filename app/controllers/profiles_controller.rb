@@ -2,7 +2,11 @@ class ProfilesController < ApplicationController
   	before_filter :adminOrMerchant_user, only: :index
 
 	def index
-	    @user = User.all
+        if current_user.try(:isMerchantUser?)   
+            @user = Credit.where( :merchant_id => current_user.merchant_id).group(:user_id).sum(:amount)
+        else
+	       @user = User.all
+        end
 
 	    respond_to do |format|
 	      format.html # index.html.erb

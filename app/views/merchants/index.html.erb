@@ -1,9 +1,12 @@
 <br><br><br>
+<div data-role="header">
+    <h1>Todos los comercios</h1>
+  </div>
 
 <% if current_user.try(:admin?) %>
   <div data-role="navbar">
     <ul>
-      <li><%= link_to "Crear nuevo comercio", new_merchant_path, class: "ui-btn" %></li>
+      <li><%= link_to "Crear nuevo comercio", new_merchant_path, class: "btn-success btn" %></li>
     </ul> 
   </div>
 <% end %>
