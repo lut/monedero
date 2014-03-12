@@ -14,8 +14,8 @@ class MerchantsController < ApplicationController
   # GET /merchants/1.json
   def show
     @merchant = Merchant.find(params[:id])
-    @qr = RQRCode::QRCode.new( @merchant.name, :size => 4, :level => :h )
-
+    @credits_count = Credit.where(:user_id => current_user.id, :merchant_id => params[:id]).count
+    @credits_sum = Credit.where(:user_id => current_user.id, :merchant_id => params[:id]).sum(:amount)
 
     respond_to do |format|
       format.html # show.html.erb
