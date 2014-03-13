@@ -66,17 +66,7 @@
   </div>
 
 <!-- Flash Messagges====-->
-	<br><br>
-	<div data-role="header">
-		<% flash.each do | type, message | %>
-			<div class="alert <%= flash_class type %>">
- 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  			<%= message %>
-		</div>
-		<% end %>
 
-		  <%= yield %>
-	</div>
 
 <!--J Query Mobile roler -->
 	  <div data-role="page" id="page">
