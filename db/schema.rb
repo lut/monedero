@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140311033132) do
+ActiveRecord::Schema.define(:version => 20140312182405) do
 
   create_table "credits", :force => true do |t|
     t.integer  "amount"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20140311033132) do
     t.decimal  "geolon",     :precision => 3, :scale => 6
     t.decimal  "geolat2"
     t.decimal  "geolon2"
+    t.decimal  "lat"
+    t.decimal  "lng"
   end
 
   create_table "users", :force => true do |t|

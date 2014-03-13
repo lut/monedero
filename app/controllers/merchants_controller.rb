@@ -17,6 +17,8 @@ class MerchantsController < ApplicationController
     @credits_count = Credit.where(:user_id => current_user.id, :merchant_id => params[:id]).count
     @credits_sum = Credit.where(:user_id => current_user.id, :merchant_id => params[:id]).sum(:amount)
 
+
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @merchant }
