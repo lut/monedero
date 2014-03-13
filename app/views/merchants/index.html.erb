@@ -6,22 +6,22 @@
 <div data-role="content">
 
 
-<% if current_user.try(:admin?) %>
-  <div data-role="navbar">
-    <ul>
-      <li><%= link_to "Crear nuevo comercio", new_merchant_path, class: "btn-success btn" %></li>
-    </ul> 
-  </div>
-<% end %>
+    <% if current_user.try(:admin?) %>
+      <div data-role="navbar">
+        <ul>
+          <li><%= link_to "Crear nuevo comercio", new_merchant_path, class: "btn-success btn" %></li>
+        </ul> 
+      </div>
+    <% end %>
 
 
      
 
-    <ul data-role="listview">
+    <ul data-role="listview" data-filter="true">
     <% @merchants.each do |merchant| %>
     <li>
         <%= link_to merchant_path(merchant) do %>
-        <h3><%= merchant.name %></h3><p><%= merchant.geolat %></p>
+        <h3><%= merchant.name %></h3>
         <% end %>
     </li>
     <% end %>

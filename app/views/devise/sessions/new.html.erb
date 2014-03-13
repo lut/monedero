@@ -1,17 +1,11 @@
-<<<<<<< HEAD
 <div data-role="content">
 <br><br><br>
 
-=======
-<div class="container">
-	<div class="row">
-		<div class="col-md-4">
->>>>>>> parent of 206df9b... Devise translated
 		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: "well"}) do |f| %>
 		  
 		  <fieldset>
 
-		  	<legend>Sign in</legend>
+		  	<legend>Inicia sesión</legend>
 
 		  <%= f.input :email %>
 		  <%= f.input :password, label: "Contraseña" %>
@@ -21,21 +15,13 @@
 		    <div><%= f.input :remember_me, as: :boolean, label: "Recordarme" %></div>
 		  <% end -%>
 
-		  <div><%= f.button :submit, "Sign in" %></div>
+		  <div><%= f.button :submit, "Iniciar sesión" %></div>
 		<% end %>
 
 		</fieldset>
 
 		<%= render "devise/shared/links" %>
-<<<<<<< HEAD
 	
-=======
 
-		</div>
-		<div class="col-md-8">
-			<h2>Signing in is easy and secure</h2>
-		</div>
-	</div>
->>>>>>> parent of 206df9b... Devise translated
 </div>
 
