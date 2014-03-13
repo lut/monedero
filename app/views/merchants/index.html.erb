@@ -1,27 +1,24 @@
 <br><br><br>
 <div data-role="header">
     <h1>Todos los comercios</h1>
-</div>
+  </div>
+
+<% if current_user.try(:admin?) %>
+  <div data-role="navbar">
+    <ul>
+      <li><%= link_to "Crear nuevo comercio", new_merchant_path, class: "btn-success btn" %></li>
+    </ul> 
+  </div>
+<% end %>
 
 <div data-role="content">
-
-
-    <% if current_user.try(:admin?) %>
-      <div data-role="navbar">
-        <ul>
-          <li><%= link_to "Crear nuevo comercio", new_merchant_path, class: "btn-success btn" %></li>
-        </ul> 
-      </div>
-    <% end %>
-
-
      
 
-    <ul data-role="listview" data-filter="true">
+    <ul data-role="listview">
     <% @merchants.each do |merchant| %>
     <li>
         <%= link_to merchant_path(merchant) do %>
-        <h3><%= merchant.name %></h3>
+        <h3><%= merchant.name %></h3><p><%= merchant.geolat %></p>
         <% end %>
     </li>
     <% end %>

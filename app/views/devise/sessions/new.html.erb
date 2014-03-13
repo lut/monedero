@@ -4,12 +4,8 @@
 		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: "well"}) do |f| %>
 		  
 		  <fieldset>
-
-		  	<legend>Inicia sesión</legend>
-
 		  <%= f.input :email %>
 		  <%= f.input :password, label: "Contraseña" %>
-
 
 		  <% if devise_mapping.rememberable? -%>
 		    <div><%= f.input :remember_me, as: :boolean, label: "Recordarme" %></div>
@@ -22,6 +18,5 @@
 
 		<%= render "devise/shared/links" %>
 	
-
 </div>
 

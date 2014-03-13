@@ -6,7 +6,6 @@
 		  <%= devise_error_messages! %>
 		  <%= f.hidden_field :reset_password_token %>
 
-<<<<<<< HEAD
 		  <div><%= f.label :password, "Nueva contraseña" %><br />
 		  <%= f.password_field :password, :autofocus => true %></div>
 
@@ -15,16 +14,6 @@
 
 		  <div><%= f.submit "Carmbiar mi contraseña" %></div>
 	<% end %>
-=======
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
-
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
->>>>>>> parent of 206df9b... Devise translated
 
 	<%= render "devise/shared/links" %>
 

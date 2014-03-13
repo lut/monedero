@@ -6,8 +6,6 @@ resources :merchants, :credits, :profiles
 
 get 'qrcode/:id', to: 'profiles#qrcode', as: 'qrcode'
 get 'add_credit_to_user/:id', to: 'credits#new' 
-get 'faqs', to: 'profiles#faqs'
-
 # get 'users/:id', to: 'users#show'
 
 devise_for :users

@@ -1,7 +1,7 @@
 <br><br><br>
 
 <div data-role="header">
-	<h1>Mis puntos</h1>
+	<h1><%= @user.email %></h1>
 </div>
 
 <% if current_user.try(:admin?)|current_user.try(:isMerchantUser?)  %>
@@ -62,27 +62,14 @@
 	<% else %>
 		<!-- User has no credits -->
 		<% if @credits_count == 0 %>
-		<br>
-			<div data-role="content">
-				<div class="panel panel-default">
-				  <div class="panel-heading"><h5>!Aún no tienes puntos! ¿Cómo gano puntos?</h5></div>
-				  	<div class="panel-body"> <br>
-				  		<ol>
-				  			<li>Visita los comercios participantes haciendo clic en <a href="/merchants">este link</a> o en el botón de la extrema izquierda "Comercios"</li><br>
-				  			<%= image_tag "welcome_tour_comercios_participantes.png" %><br><br>
-
-				  			<li>Cuando vayas a consumir muestra tu código QR al comercio para acumular puntos</li><br>
-				  			<%= image_tag "welcome_tour_codigoqr.png" %><br><br>
-
-				  			<li>Infórmate de cuántos puntos tienes en la sección "Crédito" y descubre los beneficios de cada Comercio</li><br>
-				  			<%= image_tag "welcome_tour_credito.png" %><br><br>
-				  		</ol>
-
-				  		Te invitamos a consultar la sección de <%= link_to "Preguntas frecuentes", faqs_path %>
-
-				  	</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h4>Aun no has acumulado puntos.</h4>
+						<h4>Te recomendamos visitar los <a href="/merchants">comercios participantes</a> para comenzar a generar beneficios.</h4>
+					</div>
 				</div>
-			</div><br><br>
+			</div>
 
 		<% else %>
 		<!-- User has at least one credit -->
