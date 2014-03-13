@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <div data-role="content">
 <br><br>
 	<h4>¿Olvidaste tu contraseña?</h4>
+=======
+<h2>Forgot your password?</h2>
+>>>>>>> parent of 206df9b... Devise translated
 
 	<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post },html: {class: "well"}) do |f| %>
 	  	<%= devise_error_messages! %>
@@ -9,6 +13,11 @@
 	  <div><%= f.submit "Enviarme email para restaurar contraseña" %></div>
 	<% end %>
 
+<<<<<<< HEAD
 	<%= render "devise/shared/links" %>
+=======
+  <div><%= f.submit "Send me reset password instructions" %></div>
+<% end %>
+>>>>>>> parent of 206df9b... Devise translated
 
 </div>

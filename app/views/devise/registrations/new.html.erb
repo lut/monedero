@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <div data-role="content">
   <br><br><br>
+=======
+<h2>Sign up</h2>
+>>>>>>> parent of 206df9b... Devise translated
 
   <%= simple_form_for(resource, :as => resource_name, html: {class: "well"}, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -25,7 +29,7 @@
   <div><%= f.label :password_confirmation, label: "Confirmar contraseña" %>
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit "Registrarme" %></div>
+  <div><%= f.submit "Sign up" %></div>
 <% end %>
 
 </div>
