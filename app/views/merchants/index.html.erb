@@ -1,7 +1,10 @@
 <br><br><br>
 <div data-role="header">
     <h1>Todos los comercios</h1>
-  </div>
+</div>
+
+<div data-role="content">
+
 
 <% if current_user.try(:admin?) %>
   <div data-role="navbar">
@@ -11,7 +14,7 @@
   </div>
 <% end %>
 
-<div data-role="content">
+
      
 
     <ul data-role="listview">

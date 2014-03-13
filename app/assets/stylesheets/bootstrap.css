@@ -2702,6 +2702,13 @@ input[type="button"].btn-block {
   padding-right: 10px;
 }
 
+.icon-wondering:before {
+  content: "\e613";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
 .icon-exit:before {
   content: "\e60f";
   font-family: 'IcoMoon';

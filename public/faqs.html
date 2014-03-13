@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Preguntas frecuentes</title>
+  <style type="text/css">
+    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
+    div.dialog {
+      width: 25em;
+      padding: 0 4em;
+      margin: 4em auto 0 auto;
+      border: 1px solid #ccc;
+      border-right-color: #999;
+      border-bottom-color: #999;
+    }
+    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+  </style>
+</head>
+
+<body>
+  <!-- This file lives in public/faqs.html -->
+  <br><br><br>
+  <div data-role="header"><h1>Preguntas frecuentes</h1></div>
+  
+  <div data-role="content">
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="panel-group" id="accordion">
+
+          <div class="panel panel-default">
+            
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#section1">
+                  ¿Cómo gano puntos?
+                </a>
+              </h4>
+            </div>
+
+            <div class="panel-collapse collapse" id="section1">
+              <div class="panel-body">
+                <ol>
+                <li>Visita los comercios participantes haciendo clic en <a href="/merchants">este link</a> o en el botón de la extrema izquierda "Comercios"</li><br>
+                <br><br>
+
+                <li>Cuando vayas a consumir muestra tu código QR al comercio para acumular puntos</li><br>
+                <%= image_tag "welcome_tour_codigoqr.png" %><br><br>
+
+                <li>Infórmate de cuántos puntos tienes en la sección "Crédito" y descubre los beneficios de cada Comercio</li><br>
+                <%= image_tag "welcome_tour_credito.png" %><br><br>
+              </ol>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="panel panel-default">
+            
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#section2">
+                  ¿Los puntos de un comercio son válidos en otro comercio?
+                </a>
+              </h4>
+            </div>
+
+            <div class="panel-collapse collapse" id="section2">
+              <div class="panel-body">
+                No, los puntos de un comercio solo son válidos para ese comercio. No se pueden mezclar. 
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="panel panel-default">
+            
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#section3">
+                  ¿Hay algún límite de monederos o límite de crédito?
+                </a>
+              </h4>
+            </div>
+
+            <div class="panel-collapse collapse" id="section3">
+              <div class="panel-body">
+                No, dentro de tu misma cuenta puedes tener tantos monederos como comercios estén inscritos. Y tampoco existe un límite de crédito.
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+
+
+      </div>  
+    </div>
+  </div>
+
+
+  </div>
+</body>
+</html>

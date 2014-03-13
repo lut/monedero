@@ -23,16 +23,15 @@ class ProfilesController < ApplicationController
                 if current_user.try(:isMerchantUser?)
                     @credits = Credit.where(:user_id => @user.id, :merchant_id => current_user.merchant_id)
                   else
-                    @credits = Credit.where(:user_id => @user.id)
-                    @credits_count = Credit.where(:user_id => @user.id).count
-                    @credit_per_merchant = Credit.where(:user_id => @user.id).group(:merchant_id).sum(:amount)
-
-
+                    @user = User.find(current_user.id)
+                    @credits = Credit.where(:user_id => @current_user.id)
+                    @credits_count = Credit.where(:user_id => @current_user.id).count
+                    @credit_per_merchant = Credit.where(:user_id => @current_user.id).group(:merchant_id).sum(:amount)
                 end
 
                 
 
-    			@qr = RQRCode::QRCode.new( 'http://sheltered-chamber-1367.herokuapp.com/profiles/'+@user.id.to_s, :size => 8, :level => :h )
+    			@qr = RQRCode::QRCode.new( 'http://sheltered-chamber-1367.herokuapp.com/profiles/'+@current_user.id.to_s, :size => 8, :level => :h )
 
     			render action: :show
     		else
@@ -48,7 +47,10 @@ class ProfilesController < ApplicationController
     		else
     			render file 'public/404', status: 404, formats: [:html]
 			end
+    end
 
+     def faqs
+        render file 'public/faqs', formats: [:html]
     end
 
 
