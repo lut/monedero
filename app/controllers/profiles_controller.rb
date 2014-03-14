@@ -23,10 +23,10 @@ class ProfilesController < ApplicationController
                 if current_user.try(:isMerchantUser?)
                     @credits = Credit.where(:user_id => @user.id, :merchant_id => current_user.merchant_id)
                   else
-                    @credits = Credit.where(:user_id => @user.id)
-                    @credits_count = Credit.where(:user_id => @user.id).count
-                    @credit_per_merchant = Credit.where(:user_id => @user.id).group(:merchant_id).sum(:amount)
-
+                    @user = User.find(current_user.id)
+                    @credits = Credit.where(:user_id => @current_user.id)
+                    @credits_count = Credit.where(:user_id => @current_user.id).count
+                    @credit_per_merchant = Credit.where(:user_id => @current_user.id).group(:merchant_id).sum(:amount)
 
                 end
 
