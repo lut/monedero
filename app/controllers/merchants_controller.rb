@@ -18,7 +18,7 @@ class MerchantsController < ApplicationController
     @credits_sum = Credit.where(:user_id => current_user.id, :merchant_id => params[:id]).sum(:amount)
 
     
-    @rewards = Reward.where(:merchant_id => @merchant.id).order(credits: :desc)
+    @rewards = Reward.where(:merchant_id => @merchant.id)
 
     respond_to do |format|
       format.html # show.html.erb
