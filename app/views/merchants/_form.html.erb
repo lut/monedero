@@ -1,20 +1,17 @@
-<div data-role="header">
-	<h1>Nuevo Comercio</h1>
-</div>
 
-<div data-role="content">
-
-	<%= simple_form_for(@merchant, html: {class: "well"}) do |f| %>
-  	<%= f.error_notification %>
-	<%= f.input :name, label: 'Comercio', required: true, as: :string %>
-	<%= f.input :geolat, label: 'Latitud' %>
-	<%= f.input :geolon, label: 'Longitud' %>
+		<%= simple_form_for(@merchant, html: {class: "well"}) do |f| %>
+	  	<%= f.error_notification %>
+		<%= f.input :name, label: 'Comercio', required: true, as: :string %>
+		<%= f.input :geolat, label: 'Latitud' %>
+		<%= f.input :geolon, label: 'Longitud' %>
+		<%= f.input :hours, label: 'Horas de operacion' %>
+		<%= f.input :phone, label: 'Telefono' %>
+		<%= f.input :description, label: 'Descripcion' %>
 
 
-	<div class="form-actions">
-	   <%= f.button :submit %>
-	</div>
-<% end %>
 
-</div>
+			<div class="form-actions">
+			   <%= f.button :submit, label: 'Actualizar datos' %>
+			</div>
+		<% end %>
 

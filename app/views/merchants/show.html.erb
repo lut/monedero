@@ -4,20 +4,57 @@
 	<h1><%= @merchant.name %></h1>
 </div>
 
+<div>
 	    <iframe width=100% height="300" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;aq=0&amp;oq=mara&amp;sll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;sspn=0.024855,0.038581&amp;doflg=ptk&amp;ie=UTF8&amp;hq=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;hnear=&amp;radius=15000&amp;t=m&amp;ll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;spn=0.007005,0.00912&amp;z=16&amp;output=embed&amp;iwloc=near"></iframe>
 	    <br/>
+</div>
 
-	<div class="container">
-		<% if @credits_count == 0 %>
-			<h4>Aun no tienes puntos con este comercio!</h4>
-			<% else %>
-				<h4>Puntos disponibles: <%= @credits_sum %></h4>
-			<% end %>
+<div>
+	<% if current_user.try(:admin?) %>
+		<div data-role="navbar">
+			<ul>
+				<li><%= link_to 'Editar Comercio', edit_merchant_path(@merchant), class: "btn" %> </li>
+			</ul>
+		</div>
+	<% end %>
+</div>
+
+
+
+
+<div data-role="content">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Puntos: 
+				<% if @credits_count == 0 %>
+						0
+					<% else %>
+						Puntos disponibles: <%= @credits_sum %>
+					<% end %>
+			</h4>		
+		</div>
+		<div class="panel-body">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h5>Telefono: <%= @merchant.phone %></h5>
+						<h5>Horario: <%= @merchant.hours %></h5>
+						<h5><%= @merchant.description %></h5>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
+	
+
+</div>
 
 
-	<% if current_user.try(:admin?) %>
-	  <%= link_to 'Edit', edit_merchant_path(@merchant) %> |
-	<% end %>
+
+	
+
+
+
+	
 

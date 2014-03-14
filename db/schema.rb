@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140311033132) do
+ActiveRecord::Schema.define(:version => 20140314140845) do
 
   create_table "credits", :force => true do |t|
     t.integer  "amount"
@@ -24,13 +24,18 @@ ActiveRecord::Schema.define(:version => 20140311033132) do
   end
 
   create_table "merchants", :force => true do |t|
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.text     "name"
     t.decimal  "geolat"
-    t.decimal  "geolon",     :precision => 3, :scale => 6
+    t.decimal  "geolon",      :precision => 3, :scale => 6
     t.decimal  "geolat2"
     t.decimal  "geolon2"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.integer  "phone"
+    t.text     "description"
+    t.string   "hours"
   end
 
   create_table "users", :force => true do |t|
