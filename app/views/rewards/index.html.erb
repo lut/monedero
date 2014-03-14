@@ -1,21 +1,14 @@
-<h1>Listing rewards</h1>
+<br><br><br>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h5>Listado de Rewards</h5></div>
+    <ul class="list-group">
+      <a href="/rewards/new" class="list-group-item icon-plus-sm">Crear nuevo premio</a>
+      <% @rewards.each do |reward| %>
+          <a href="/rewards/<%= reward.id %>/edit" class="list-group-item"><%= reward.merchant_id %> | <%= reward.name %></a>
+          </li>
+      <% end %>
+    </ul>
+</div>
 
-<% @rewards.each do |reward| %>
-  <tr>
-    <td><%= link_to 'Show', reward %></td>
-    <td><%= link_to 'Edit', edit_reward_path(reward) %></td>
-    <td><%= link_to 'Destroy', reward, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Reward', new_reward_path %>

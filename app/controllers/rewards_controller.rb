@@ -1,4 +1,8 @@
 class RewardsController < ApplicationController
+  before_filter :adminOrMerchant_user, only: [:new, :edit, :create, :update]
+  before_filter :admin_user, only: [:destroy, :index]
+
+
   # GET /rewards
   # GET /rewards.json
   def index
@@ -52,7 +56,7 @@ class RewardsController < ApplicationController
 
     respond_to do |format|
       if @reward.save
-        format.html { redirect_to @reward, notice: 'Reward was successfully created.' }
+        format.html { redirect_to merchant_path(@reward.merchant_id), notice: 'Reward was successfully created.' }
         format.json { render json: @reward, status: :created, location: @reward }
       else
         format.html { render action: "new" }
@@ -68,7 +72,7 @@ class RewardsController < ApplicationController
 
     respond_to do |format|
       if @reward.update_attributes(params[:reward])
-        format.html { redirect_to @reward, notice: 'Reward was successfully updated.' }
+        format.html { redirect_to merchant_path(@reward.merchant_id), notice: 'Reward was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -88,4 +92,24 @@ class RewardsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
+
+    def adminOrMerchant_user
+      redirect_to(root_path) unless (current_user.admin? | current_user.isMerchantUser?)
+    end
+
+    def signed_in_user
+      unless signed_in?
+        redirect_to signin_url, notice: "Por favor inicia sesion." 
+    end
+
+    
+
+  end
+
+
 end
