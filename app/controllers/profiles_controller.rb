@@ -36,7 +36,7 @@ class ProfilesController < ApplicationController
 
     			render action: :show
     		else
-    			render file 'public/404', status: 404, formats: [:html]
+    			render file 'public/404', formats: [:html]
 			end
     end
 
@@ -49,6 +49,10 @@ class ProfilesController < ApplicationController
     			render file 'public/404', status: 404, formats: [:html]
 			end
 
+    end
+
+    def faqs
+        render file 'public/faqs', formats: [:html]
     end
 
 

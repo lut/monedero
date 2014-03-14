@@ -1,25 +1,31 @@
-<br><br><br><br>
+<br><br><br>
+<div data-role="header">
+  <h1>Mi código QR</h1>
+</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="well">
-    	<table class="center">
-            <% @qr.modules.each_index do |x| %>
-            	<tr> 
-    				<% @qr.modules.each_index do |y| %>
-               			<% if @qr.dark?(x,y) %>
-                			<td class="black"/>
-              			<% else %>
-                			<td class="white"/>
-               		<% end %>
+<div data-role="content">
+  <div class="panel panel-defaul">
+    <div class="panel-body">
+      <table class="center">
+                <% @qr.modules.each_index do |x| %>
+                  <tr> 
+                <% @qr.modules.each_index do |y| %>
+                        <% if @qr.dark?(x,y) %>
+                          <td class="black"/>
+                        <% else %>
+                          <td class="white"/>
+                      <% end %>
 
-               		
-              	<% end %>
-              </tr>
-            <% end %>
-     	</table>
-      </div>
-     </div>
-   </div>
+                      
+                    <% end %>
+                  </tr>
+                <% end %>
+          </table>
+    </div>
+
+    <div class="panel-footer">
+      Muesta el código QR en los comercios para ganar y pagar con puntos. 
+    </div>
+  </div>
+
  </div>

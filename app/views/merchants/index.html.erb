@@ -14,7 +14,7 @@
 <div data-role="content">
      
 
-    <ul data-role="listview">
+    <ul data-role="listview" data-filter="true">
     <% @merchants.each do |merchant| %>
     <li>
         <%= link_to merchant_path(merchant) do %>
