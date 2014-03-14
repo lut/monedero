@@ -3,5 +3,6 @@ class Merchant < ActiveRecord::Base
 
   has_many :credits
   has_many :users
+  has_many :awards
   
 end

@@ -1,5 +1,8 @@
 Treebook::Application.routes.draw do
 
+  resources :rewards
+
+
 root to: "merchants#index"
 resources :merchants, :credits, :profiles
 

@@ -29,7 +29,7 @@
 				<% if @credits_count == 0 %>
 						0
 					<% else %>
-						Puntos disponibles: <%= @credits_sum %>
+						<%= @credits_sum %>
 					<% end %>
 			</h4>		
 		</div>
@@ -46,9 +46,17 @@
 		</div>
 	</div>
 
-	
+	<ul class="list-group">
+		<% @rewards.each do |reward| %>
+	  		<li class="list-group-item"><%= reward.name %>
+	  			<span class="badge alert-info"><%= reward.credits %></span>
+	  		</li>
+		<% end %>
+	</ul>
 
 </div>
+
+<br>
 
 
 
