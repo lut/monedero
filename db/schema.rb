@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140315015821) do
+ActiveRecord::Schema.define(:version => 20140315025920) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "icon"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "credits", :force => true do |t|
     t.integer  "amount"
@@ -36,7 +43,11 @@ ActiveRecord::Schema.define(:version => 20140315015821) do
     t.integer  "phone"
     t.text     "description"
     t.string   "hours"
+    t.integer  "category_id"
   end
+
+  add_index "merchants", ["category_id"], :name => "index_merchants_on_category_id"
+  add_index "merchants", ["name"], :name => "index_merchants_on_name"
 
   create_table "rewards", :force => true do |t|
     t.integer  "merchant_id"

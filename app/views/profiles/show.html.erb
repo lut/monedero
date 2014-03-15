@@ -90,7 +90,7 @@
 		<!-- User has at least one credit -->
 			<ul class="list-group">      
     		<% @credit_per_merchant.each do |key, value| %>
-     	   <a href="/merchants/<%= key %>"class="list-group-item"><p>Comercio <%= key %>:  <%= value %> puntos</p></a>
+     	   <a href="/merchants/<%= key %>"class="list-group-item"><p><%= Merchant.find(key).name %>:  <%= value %> puntos</p></a>
    			 <% end %>
  		 </ul>
 

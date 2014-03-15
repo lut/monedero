@@ -4,11 +4,14 @@
       <% end %>
       
     <% @merchants.each do |merchant| %>
-        <a href="/merchants/<%= merchant.id %>" class="list-group-item"><%= merchant.name %></a>
+        <a href="/merchants/<%= merchant.id %>" class="list-group-item <%= Category.find(merchant.category_id).icon %>"><%= merchant.name %></a>
     <% end %>
 </ul>
 
                
+
+
+
 
 
   

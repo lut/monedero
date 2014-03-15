@@ -2,6 +2,7 @@
 		<%= simple_form_for(@merchant, html: {class: "well"}) do |f| %>
 	  	<%= f.error_notification %>
 		<%= f.input :name, label: 'Comercio', required: true, as: :string %>
+		<%= f.input :category_id, collection: Category.all, required: true %>
 		<%= f.input :geolat, label: 'Latitud' %>
 		<%= f.input :geolon, label: 'Longitud' %>
 		<%= f.input :hours, label: 'Horas de operacion' %>

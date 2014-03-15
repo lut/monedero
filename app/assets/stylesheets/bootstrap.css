@@ -2702,6 +2702,41 @@ input[type="button"].btn-block {
   padding-right: 10px;
 }
 
+.icon-food:before {
+  content: "\e615";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-fire:before {
+  content: "\e616";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-glass:before {
+  content: "\e617";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-mug:before {
+  content: "\e618";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-droplet:before {
+  content: "\e619";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
 .icon-wondering:before {
   content: "\e613";
   font-family: 'IcoMoon';
@@ -2715,6 +2750,22 @@ input[type="button"].btn-block {
   font-size: 15px;
   padding-right: 10px;
 }
+
+.icon-quill:before {
+  content: "\e60b";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-spinner2:before {
+  content: "\e60d";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+
 
 .icon-credit:before {
   content: "\e600";

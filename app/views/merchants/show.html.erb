@@ -9,14 +9,29 @@
 
 <div>
 	<% if current_user.try(:admin?) %>
-		<div data-role="navbar">
-			<ul>
-				<li><%= link_to 'Editar Comercio', edit_merchant_path(@merchant), class: "btn" %> </li>
-			</ul>
-		</div>
+	<li><%= link_to 'Editar Comercio', edit_merchant_path(@merchant), class: "btn" %> </li>
 	<% end %>
 </div>
 
+
+<ul class="nav nav-tabs nav-justified" id="myTab">
+  <li class="active"><a data-target="home" data-toggle="tab">Home</a></li>
+  <li><a data-target="profile" data-toggle="tab">Profile</a></li>
+  <li><a data-target="premios" data-toggle="tab">Premios</a></li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane-active" id="home">
+		HOME HOME
+	</div>
+	<div class="tab-pane-active" id="profile">
+		Profiles Profiles Profiles 
+	</div>
+
+	<div class="tab-pane-active" id="premios">
+		Premios Premios Premios 
+	</div>
+</div>
 
 
 
@@ -60,6 +75,11 @@
 
 <br><br><br>
 
+<script>
+	jQuery(function (){
+		jQuery('#myTab a:last').tab('show')
+	})
+</script>
 
 
 	

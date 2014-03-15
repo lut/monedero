@@ -1,5 +1,8 @@
 Treebook::Application.routes.draw do
 
+  resources :categories
+
+
   resources :rewards
 
 
