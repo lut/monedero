@@ -6,9 +6,7 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css"/>
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
-	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script> 
+	
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -66,50 +64,54 @@
   </div>
 
 <!-- Flash Messagges====-->
-	<br><br>
-	<div class="container">
-		<% flash.each do | type, message | %>
+<br><br>
+<div class="container">
+	<!-- <% flash.each do | type, message | %>
 			<div class="alert <%= flash_class type %>">
  			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   			<%= message %>
 		</div>
 		<% end %>
+	-->
+	<%= yield %>
+</div>
 
-		  <%= yield %>
-	</div>
-
-<!--J Query Mobile roler -->
-	  <div data-role="page" id="page">
-    	<%= yield %>
-  	</div>
 
 <!--Bottom Nav Bar-->
 
-<% if user_signed_in? %>
-	<nav class="navbar navbar-default navbar-fixed-bottom nav-justified" role="navigation">
-		<div class="btn-group btn-group-justified active">
 
-<!-- is Admin? -->         
-		<% if current_user.try(:admin?) %>
-			<div class="btn-group"><%= link_to "Comercios", merchants_path, class: "icon-flag btn btn-default navbar-btn" %></div>
-			<div class="btn-group"><%= link_to "Puntos", credits_path, class: "icon-credit btn btn-default navbar-btn" %></div>
-			<div class="btn-group"><%= link_to "Usuarios", profiles_path, class: "icon-user btn btn-default navbar-btn" %></div>
-		<% else %>
+
+
+<% if user_signed_in? %>
+	<ul class="nav nav-justified navbar-fixed-bottom nav-tabs">
+
+	
+	<% if current_user.try(:admin?) %>
+		  <li class="<%= 'active' if params[:controller] == 'merchants' %>"> <a href="/merchants">Comercios</a> </li>
+		  <li class="<%= 'active' if params[:controller] == 'credits' %>"> <a href="/credits">Creditos</a> </li>
+		  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/profiles">Usuarios</a> </li>        
+	<% else %>
 
 <!-- is Merchant User? -->
 		<%if current_user.try(:isMerchantUser?) %>
-			<div class="btn-group"><%= link_to "Usuarios", profiles_path, class: "icon-user btn btn-default navbar-btn" %></div>
-			<div class="btn-group"><%= link_to "Puntos", credits_path, class: "icon-credit btn btn-default navbar-btn" %></div>
+
+			<ul class="nav nav-justified navbar-fixed-bottom nav-tabs">
+			  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/profiles">Usuarios</a> </li>
+			  <li class="<%= 'active' if params[:controller] == 'credits' %>"> <a href="/credits">Creditos</a> </li>      
+
 		<% else %>
 
 <!-- Regular Signed-in User -->
-			<div class="btn-group"><%= link_to "Comercios", merchants_path, class: "icon-flag btn btn-default navbar-btn" %></div>
-			<div class="btn-group"><%= link_to "QR Code", qrcode_path(current_user), class: "icon-qrcode btn btn-default navbar-btn" %></div>
-			<div class="btn-group"><%= link_to "Credito", profile_path(current_user), class: "icon-credit btn btn-default navbar-btn" %></div>
+
+			<ul class="nav nav-justified navbar-fixed-bottom nav-tabs">
+			  <li class="<%= 'active' if params[:controller] == 'merchants' %>"> <a href="/merchants">Comercios</a> </li>
+			  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/qrcode/<%= current_user.id %>">Codigo QR</a> </li>
+			  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/profiles/<%= current_user.id %>">Creditos</a> </li>       
+
 			<% end %>
-			<% end %>
-		</div>
-	</nav>
+		<% end %>
+
+	</ul>
 <% end %>
 
 </body>

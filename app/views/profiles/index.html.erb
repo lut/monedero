@@ -1,9 +1,5 @@
-<br><br><br>
-
-<div data-role="header">
 	<h1>Total de usuarios: <%= @user.count %></h1>
-</div>
-
+	
 <% if current_user.try(:admin?) %>
 		<table class="table table-striped table-hover">
 				<tr>
@@ -34,17 +30,15 @@
 		</table>
 	<% else %>
 		
-		<div data-role="content">    
-		    <ul data-role="listview">
-		    	<% @user.each do |key, value| %>
-		    <li>
-		        <a href="/profiles/<%= key %>"><h3>Usuario <%= key %>:  <%= value %> puntos</h3></a>
-		    </li>
-		    <% end %>
-		    </ul>
-		</div>
+		<ul class="list-group">
+      
+    <% @user.each do |key, value| %>
+        <a href="/profiles/<%= key %>" class="list-group-item"><p>Usuario <%= key %>:  <%= value %> puntos</p></a>
+    <% end %>
+</ul>
 
 <% end %>
+
 
 
 

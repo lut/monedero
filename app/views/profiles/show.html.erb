@@ -1,8 +1,9 @@
-<br><br><br>
-
-<div data-role="header">
+<% if current_user.try(:admin?)|current_user.try(:isMerchantUser?)  %>
+	<h1><%= @user.first_name %></h1>
+	<% else %>
 	<h1>Mis puntos</h1>
-</div>
+ <% end %>
+
 
 <% if current_user.try(:admin?)|current_user.try(:isMerchantUser?)  %>
 	<nav class="navbar" role="navigation">
@@ -87,15 +88,14 @@
 
 		<% else %>
 		<!-- User has at least one credit -->
-			<div data-role="content">    
-			    <ul data-role="listview">
-			    	<% @credit_per_merchant.each do |key, value| %>
-			    <li>
-			        <a href="/merchants/<%= key %>"><h3>Comercio <%= key %>:  <%= value %> puntos</h3></a>
-			    </li>
-			    <% end %>
-			    </ul>
-			</div>
+			<ul class="list-group">      
+    		<% @credit_per_merchant.each do |key, value| %>
+     	   <a href="/merchants/<%= key %>"class="list-group-item"><p>Comercio <%= key %>:  <%= value %> puntos</p></a>
+   			 <% end %>
+ 		 </ul>
+
+
+
 	<% end %>
 <% end %>
  
