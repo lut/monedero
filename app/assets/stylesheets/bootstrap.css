@@ -2174,6 +2174,11 @@ textarea.input-lg {
   color: #737373;
 }
 
+.invalid{
+  border-color: #E9322D!important;
+box-shadow: 0 0 6px #F8B9B7!important;
+}
+
 @media (min-width: 768px) {
   .form-inline .form-group {
     display: inline-block;

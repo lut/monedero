@@ -1,21 +1,43 @@
-<div data-role="header">
-	<h1><%= @user.first_name %></h1>
-</div>
 
-<div data-role="content">
-  <%= simple_form_for(@credit, html: {class: "well"}) do |f| %>
-    <%= f.error_notification %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+     <% if session[:credit_type] == "add" %>Agregar puntos
+     <% else %>Cobrar con puntos
+     <% end %>
+  </div>
 
-    <div class="form-inputs">  	
-    	<% if current_user.try(:admin?) %><%= f.input :merchant_id, collection: Merchant.all %> <% end %>
-    	<%= f.input :user_id, collection: User.all, label_method: :first_name,  :as => :hidden %>
-      <%= f.input :amount %>
-    </div>
+  <div class= "panel-body">
+    <%= simple_form_for(@credit) do |f| %>
+        <%= f.error_notification %>
 
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
-  <% end %>
+        	<% if current_user.try(:admin?) %><%= f.input :merchant_id, collection: Merchant.all %> <% end %>
+        	<%= f.input :user_id, collection: User.all, label_method: :first_name,  :as => :hidden %>
+          
+          <% if session[:credit_type] == "add" %>
+            <%= f.input :purchase_amount, label: 'Importe de compra', required: true, as: :integer %>
+            <% else %>
+              <%= f.input :amount, label: "Puntos", html: {class: "form-control required"} %>
+           <% end %>
+
+
+
+        <div class="form-actions">
+          <% if session[:credit_type] == "add" %>
+          <%= f.button :submit, "Generar puntos" %>
+          <% else %>
+          <%= f.button :submit, "Cobrar puntos" %>
+          <% end %>
+          
+        </div>
+
+    <% end %>
+  </div>
+
+  <div class="panel-footer"> 
+    <% if session[:credit_type] == "add" %>Los puntos se calculan a partir del importe de la compra y el % que otorga el comercio. Si hubiera promociones se calculan automáticamente.
+     <% else %>Ingresa el total de puntos a descontar.
+    <% end %>
+     </div>
 </div>
 
 

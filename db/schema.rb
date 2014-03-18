@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140315025920) do
+ActiveRecord::Schema.define(:version => 20140315194416) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -22,20 +22,23 @@ ActiveRecord::Schema.define(:version => 20140315025920) do
 
   create_table "credits", :force => true do |t|
     t.integer  "amount"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.integer  "user_id"
     t.integer  "merchant_id"
     t.string   "credit_type"
     t.text     "assigned_by"
+    t.integer  "purchase_amount"
+    t.decimal  "convertion_rate", :precision => 0, :scale => 2
+    t.date     "expires_on"
   end
 
   create_table "merchants", :force => true do |t|
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.text     "name"
     t.decimal  "geolat"
-    t.decimal  "geolon",      :precision => 3, :scale => 6
+    t.decimal  "geolon",          :precision => 3, :scale => 6
     t.decimal  "geolat2"
     t.decimal  "geolon2"
     t.decimal  "lat"
@@ -44,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20140315025920) do
     t.text     "description"
     t.string   "hours"
     t.integer  "category_id"
+    t.decimal  "convertion_rate", :precision => 0, :scale => 2
   end
 
   add_index "merchants", ["category_id"], :name => "index_merchants_on_category_id"

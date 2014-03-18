@@ -1,7 +1,6 @@
 class CreditsController < ApplicationController
   before_filter :adminOrMerchant_user, only: [:new, :edit, :create, :update, :destroy, :index, :show]
 
-
   def index
     if current_user.try(:admin?)
       @credits = Credit.all
@@ -32,8 +31,7 @@ class CreditsController < ApplicationController
   def new
     @credit = Credit.new
     @credit.user_id = params[:id]
-    @user = User.find(params[:id])
-
+    session[:credit_type] = params[:type]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,11 +49,28 @@ class CreditsController < ApplicationController
   def create
     @credit = Credit.new(params[:credit])
     @credit.assigned_by = current_user.email
-      if current_user.try(:admin?) 
+    @credit.expires_on = Date.today + 3.month
+
+    if current_user.try(:admin?) 
         else
         @credit.merchant_id = current_user.merchant_id
-
       end
+
+
+  case session[:credit_type]
+  when "add"
+    @credit.convertion_rate = Merchant.find(@credit.merchant_id).convertion_rate
+    @credit.amount = @credit.purchase_amount * @credit.convertion_rate
+
+  when "remove"
+    @credit.amount = -@credit.amount
+    
+    
+  end
+  
+
+     
+
 
     respond_to do |format|
       if @credit.save
@@ -66,6 +81,7 @@ class CreditsController < ApplicationController
         format.json { render json: @credit.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PUT /credits/1
@@ -96,6 +112,8 @@ class CreditsController < ApplicationController
     end
   end
 
+       
+
   private
     def adminOrMerchant_user
       redirect_to(root_path) unless (current_user.admin? | current_user.isMerchantUser?)
@@ -105,6 +123,7 @@ class CreditsController < ApplicationController
       unless signed_in?
         redirect_to signin_url, notice: "Por favor inicia sesion." 
     end
+
   end
 
 end

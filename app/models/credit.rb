@@ -1,5 +1,5 @@
 class Credit < ActiveRecord::Base
-  attr_accessible :amount, :credit_type, :user_id, :merchant_id
+  attr_accessible :amount, :credit_type, :user_id, :merchant_id, :purchase_amount
 
   belongs_to :user
   belongs_to :merchant

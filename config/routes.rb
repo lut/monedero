@@ -1,17 +1,11 @@
 Treebook::Application.routes.draw do
 
-  resources :categories
-
-
-  resources :rewards
-
-
 root to: "merchants#index"
-resources :merchants, :credits, :profiles
+resources :merchants, :credits, :profiles, :categories, :rewards
 
 
 get 'qrcode/:id', to: 'profiles#qrcode', as: 'qrcode'
-get 'add_credit_to_user/:id', to: 'credits#new' 
+get 'add_credit_to_user/:id/:type', to: 'credits#new' 
 get 'faqs', to: 'profiles#faqs'
 # get 'users/:id', to: 'users#show'
 
