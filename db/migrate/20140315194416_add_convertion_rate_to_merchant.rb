@@ -1,6 +1,6 @@
 class AddConvertionRateToMerchant < ActiveRecord::Migration
   def up
-  	add_column :merchants, :convertion_rate, :decimal, precision: 0, scale: 2
+  	add_column :merchants, :convertion_rate, :decimal, precision: 1, scale: 2
   end
 
   def down
