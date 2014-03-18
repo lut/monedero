@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140318031742) do
+ActiveRecord::Schema.define(:version => 20140318033151) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20140318031742) do
     t.string   "credit_type"
     t.text     "assigned_by"
     t.integer  "purchase_amount"
-    t.decimal  "convertion_rate", :precision => 1, :scale => 2
+    t.decimal  "convertion_rate", :precision => 2, :scale => 2
     t.date     "expires_on"
   end
 
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20140318031742) do
     t.text     "description"
     t.string   "hours"
     t.integer  "category_id"
-    t.decimal  "convertion_rate", :precision => 1, :scale => 2
+    t.decimal  "convertion_rate", :precision => 2, :scale => 2
   end
 
   add_index "merchants", ["category_id"], :name => "index_merchants_on_category_id"
