@@ -1,90 +1,81 @@
-<div data-role="header">
-	<h1><%= @merchant.name %></h1>
-</div>
+<div class="container">
+		<div class="row">
+			<div class="col-md-4">
 
-<div>
-	    <iframe width=100% height="300" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;aq=0&amp;oq=mara&amp;sll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;sspn=0.024855,0.038581&amp;doflg=ptk&amp;ie=UTF8&amp;hq=Alcatraces+31+S.M.+22+Cancun,+Quintana+Roo&amp;hnear=&amp;radius=15000&amp;t=m&amp;ll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;spn=0.007005,0.00912&amp;z=16&amp;output=embed&amp;iwloc=near"></iframe>
-	    <br/>
-</div>
+				<div class="panel panel-default">
 
-<div>
-	<% if current_user.try(:admin?) %>
-	<li><%= link_to 'Editar Comercio', edit_merchant_path(@merchant), class: "btn" %> </li>
-	<% end %>
-</div>
+<!-- Merchant Info =============-->
+					<div class="panel-heading"><%= @merchant.name %></div>
 
-
-<ul class="nav nav-tabs nav-justified" id="myTab">
-  <li class="active"><a data-target="home" data-toggle="tab">Home</a></li>
-  <li><a data-target="profile" data-toggle="tab">Profile</a></li>
-  <li><a data-target="premios" data-toggle="tab">Premios</a></li>
-</ul>
-
-<div class="tab-content">
-	<div class="tab-pane-active" id="home">
-		HOME HOME
-	</div>
-	<div class="tab-pane-active" id="profile">
-		Profiles Profiles Profiles 
-	</div>
-
-	<div class="tab-pane-active" id="premios">
-		Premios Premios Premios 
-	</div>
-</div>
-
-
-
-<div data-role="content">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h4>Puntos: 
-				<% if @credits_count == 0 %>
-						0
-					<% else %>
-						<%= @credits_sum %>
-					<% end %>
-			</h4>		
-		</div>
-		<div class="panel-body">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h5>Telefono: <%= @merchant.phone %></h5>
-						<h5>Horario: <%= @merchant.hours %></h5>
-						<h5><%= @merchant.description %></h5>
+					<div class="panel-body">
+						<p>
+							<address>
+							<%= @merchant.address_street %>, <%= @merchant.address_number %><br>
+							<%= @merchant.address_city %>, <%= @merchant.address_state %>
+							</address>
+						</p>		
 					</div>
+						<ul class="list-group">
+
+							<% if not(@merchant.phone.nil?) %><li class="list-group-item icon-phone"><%= @merchant.phone %></li><% end %> 
+							<% if not(@merchant.email.nil?) %><li class="list-group-item icon-mail"><%= @merchant.email %></li><% end %> 
+							<% if not(@merchant.hours.nil?) %><li class="list-group-item icon-alarm"><%= @merchant.hours %></li><% end %> 
+							<% if not(@merchant.website.nil?) %><a class="list-group-item icon-globe" href="<%= @merchant.website %>">Website</a><% end %> 
+							<% if not(@merchant.facebook.nil?) %><a class="list-group-item icon-facebook" href="<%= @merchant.facebook %>">Facebook</a><% end %> 	
+						</ul>
 				</div>
 			</div>
+
+<!-- Mapa ======================-->
+
+			<div class="col-md-8">
+				<iframe width=100% height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=<%= @merchant.address_street %>+<%= @merchant.address_number %>+<%= @merchant.address_city %>+<%= @merchant.address_state %>&amp;aq=0&amp;oq=mara&amp;sll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;sspn=0.024855,0.038581&amp;doflg=ptk&amp;ie=UTF8&amp;hq=<%= @merchant.address_street %>+<%= @merchant.address_number %>+<%= @merchant.address_city %>+<%= @merchant.address_state %>&amp;hnear=&amp;radius=15000&amp;t=m&amp;ll=<%= @merchant.geolat %>,<%= @merchant.geolon%>&amp;spn=0.007005,0.00912&amp;z=16&amp;output=embed&amp;iwloc=near"></iframe>
+
+			</div>
 		</div>
-	</div>
 
-	<ul class="list-group">
-		<% if current_user.try(:admin?) | current_user.try(:isMerchantUser?) %>
-			<a href="/rewards/new" class="list-group-item icon-plus-sm">Crear nuevo premio</a>
-			<% end %>
-			
-		<% @rewards.each do |reward| %>
-	  		<li class="list-group-item"><%= reward.name %>
-	  			<span class="badge alert-info"><%= reward.credits %></span>
-	  		</li>
-		<% end %>
-	</ul>
+<!-- Rewards List =============-->
 
+		<div class="row">
+			<div class="col-md-4">
+				<ul class="list-group">
+					<li class="list-group-item">Recompensas</li>
+					<% if current_user.try(:admin?) %>
+						<a href="/rewards/new" class="list-group-item icon-plus-sm">Crear nuevo premio</a>
+						<% end %>
+
+						<% @rewards.each do |reward| %>
+						<li class="list-group-item"><%= reward.name %>
+						<span class="badge alert-info"><%= reward.credits %></span>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+
+<!-- My credits  =============-->
+
+			<div class="col-md-8">
+				<ul class="list-group">
+					<li class="list-group-item">Puntos disponibles: 
+						<span class="badge alert-info"><%= @credits_sum %></span>
+					</li>
+					<% @credits.each do |credit| %>
+					<li class="list-group-item"><%= credit.created_at.to_formatted_s(:short) %>
+						<% if credit.amount > 0  %>
+							<span class="badge alert-success"><%= credit.amount %></span>
+						<% else %>
+							<span class="badge alert-danger"><%= credit.amount %></span>
+						<% end %>
+					</li>
+					<% end %>
+					<li class="list-group-item">Ver mas...</li>
+				</ul>
+			</div>
+
+		</div>
+	
 </div>
-
-<br><br><br>
-
-<script>
-	jQuery(function (){
-		jQuery('#myTab a:last').tab('show')
-	})
-</script>
-
-
 	
+<br><br><br><br><br><br><br>
 
-
-
-	
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Monedero</title>
-  	<meta name="viewport" content="width=device-width">
+  <title>Volverás!</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
@@ -27,7 +27,7 @@
 
 
 <!-- Fixed Navigation Bar ==========-->
-	 <div class="navbar navbar-default navbar-fixed-top">
+	 <div class="navbar navbar-default navbar-fixed-top navbar-custom">
     	<div class="container">
       <div class= "navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -36,7 +36,7 @@
           <span class="icon-bar"></span>
         </button>
 
-        <a href="#" class="navbar-brand"><span class="icon-gift"></span>Hasta Pronto!</a>
+        <a href="#" class="navbar-brand"><span class="icon-gift"></span>Volverás!</a>
       </div>
 
       <div class="navbar-collapse collapse">
@@ -83,11 +83,11 @@
 
 
 <% if user_signed_in? %>
-	<ul class="nav nav-justified navbar-fixed-bottom nav-tabs">
+	<ul class="nav nav-justified navbar-fixed-bottom nav-tabs nav-tabs-custom">
 
 	
 	<% if current_user.try(:admin?) %>
-		  <li class="<%= 'active' if params[:controller] == 'merchants' %>"> <a href="/merchants">Comercios</a> </li>
+		  <li class="<%= 'active' if params[:controller] == 'merchants' %>"> <a href="/merchants" >Comercios</a> </li>
 		  <li class="<%= 'active' if params[:controller] == 'credits' %>"> <a href="/credits">Creditos</a> </li>
 		  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/profiles">Usuarios</a> </li>        
 	<% else %>
@@ -104,9 +104,9 @@
 <!-- Regular Signed-in User -->
 
 			<ul class="nav nav-justified navbar-fixed-bottom nav-tabs">
-			  <li class="<%= 'active' if params[:controller] == 'merchants' %>"> <a href="/merchants">Comercios</a> </li>
-			  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/qrcode/<%= current_user.id %>">Codigo QR</a> </li>
-			  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/profiles/<%= current_user.id %>">Creditos</a> </li>       
+			  <li class="<%= 'active' if params[:controller] == 'merchants' %>"> <a href="/merchants" class="icon-flag"></a> </li>
+			  <li class="<%= 'active' if params[:controller] == 'qrcodes' %>"> <a href="/qrcode/<%= current_user.id %>" class="icon-qrcode"></a> </li>
+			  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/profiles/<%= current_user.id %>" class="icon-credit"></a> </li>       
 
 			<% end %>
 		<% end %>

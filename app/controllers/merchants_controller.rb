@@ -17,10 +17,13 @@ class MerchantsController < ApplicationController
   def show
     @merchant = Merchant.find(params[:id])
     @credits_count = Credit.where(:user_id => current_user.id, :merchant_id => params[:id]).count
-    @credits_sum = Credit.where(:user_id => current_user.id, :merchant_id => params[:id]).sum(:amount)
-
-    
+    @credits_sum = Credit.where(:user_id => current_user.id, :merchant_id => params[:id]).sum(:amount) 
     @rewards = Reward.where(:merchant_id => @merchant.id).order('credits desc')
+
+    if current_user.role = "user"
+    @credits = Credit.where(:user_id => current_user.id, :merchant_id => @merchant.id).last(4)
+      
+    end
 
     respond_to do |format|
       format.html # show.html.erb

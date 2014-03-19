@@ -4,7 +4,7 @@ root to: "merchants#index"
 resources :merchants, :credits, :profiles, :categories, :rewards
 
 
-get 'qrcode/:id', to: 'profiles#qrcode', as: 'qrcode'
+get 'qrcode/:id', to: 'qrcodes#show'
 get 'add_credit_to_user/:id/:type', to: 'credits#new' 
 get 'faqs', to: 'profiles#faqs'
 # get 'users/:id', to: 'users#show'

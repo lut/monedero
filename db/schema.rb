@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140318033151) do
+ActiveRecord::Schema.define(:version => 20140318191952) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -34,20 +34,30 @@ ActiveRecord::Schema.define(:version => 20140318033151) do
   end
 
   create_table "merchants", :force => true do |t|
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
     t.text     "name"
     t.decimal  "geolat"
-    t.decimal  "geolon",          :precision => 3, :scale => 6
-    t.decimal  "geolat2"
-    t.decimal  "geolon2"
+    t.decimal  "geolon",           :precision => 3, :scale => 6
     t.decimal  "lat"
     t.decimal  "lng"
     t.integer  "phone"
     t.text     "description"
     t.string   "hours"
     t.integer  "category_id"
-    t.decimal  "convertion_rate", :precision => 2, :scale => 2
+    t.decimal  "convertion_rate",  :precision => 2, :scale => 2
+    t.string   "address_street"
+    t.string   "address_number"
+    t.string   "address_city"
+    t.string   "address_state"
+    t.string   "address_zip_code"
+    t.string   "address_country"
+    t.string   "logo"
+    t.string   "email"
+    t.string   "facebook"
+    t.string   "website"
+    t.string   "twitter"
+    t.string   "instagram"
   end
 
   add_index "merchants", ["category_id"], :name => "index_merchants_on_category_id"

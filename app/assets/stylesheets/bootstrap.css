@@ -2700,6 +2700,41 @@ input[type="button"].btn-block {
        url('icons/icomoon.svg#icomoon') format('svg');
 }
 
+.icon-mail:before {
+  content: "\e621";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-globe:before {
+  content: "\e61f";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-facebook:before {
+  content: "\e61c";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-phone:before {
+  content: "\e61a";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
+.icon-alarm:before {
+  content: "\e61b";
+  font-family: 'IcoMoon';
+  font-size: 15px;
+  padding-right: 10px;
+}
+
 .icon-gift:before {
   content: "\e60e";
   font-family: 'IcoMoon';
@@ -4303,7 +4338,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 border-bottom: 0px;
 border-top: 1px solid #ddd;
 background-color: white;
-
 }
 
 
@@ -4978,6 +5012,7 @@ border-bottom:0px;
 .navbar-default .navbar-link:hover {
   color: #333333;
 }
+
 
 .navbar-inverse {
   background-color: #222222;

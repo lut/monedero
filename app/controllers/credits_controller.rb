@@ -32,6 +32,9 @@ class CreditsController < ApplicationController
     @credit = Credit.new
     @credit.user_id = params[:id]
     session[:credit_type] = params[:type]
+    @total_credit = Credit.where(:user_id => @credit.user_id, :merchant_id => current_user.merchant_id).sum(:amount)
+
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,42 +50,66 @@ class CreditsController < ApplicationController
   # POST /credits
   # POST /credits.json
   def create
+
+
     @credit = Credit.new(params[:credit])
     @credit.assigned_by = current_user.email
-    @credit.expires_on = Date.today + 3.month
 
     if current_user.try(:admin?) 
         else
         @credit.merchant_id = current_user.merchant_id
       end
 
+    @total_credit = Credit.where(:user_id => @credit.user_id, :merchant_id => @credit.merchant_id).sum(:amount)
 
-  case session[:credit_type]
-  when "add"
-    @credit.convertion_rate = Merchant.find(@credit.merchant_id).convertion_rate
-    @credit.amount = @credit.purchase_amount * @credit.convertion_rate
 
-  when "remove"
-    @credit.amount = -@credit.amount
-    
-    
-  end
+
+      case session[:credit_type]
+      when "add"
+        @credit.convertion_rate = Merchant.find(@credit.merchant_id).convertion_rate
+        @credit.amount = @credit.purchase_amount * @credit.convertion_rate
+        @credit.expires_on = Date.today + 3.month
+
+      when "remove"
+        @credit.amount = -@credit.amount
+        
+      end
   
 
-     
+      case session[:credit_type]
+      when "add"
+        respond_to do |format|
+          if @credit.save
+            format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos generados exitosamente.' }
+            format.json { render json: @credit, status: :created, location: @credit }
+          else
+            format.html { render action: "new" }
+            format.json { render json: @credit.errors, status: :unprocessable_entity }
+          end
+        end
 
-
-    respond_to do |format|
-      if @credit.save
-        format.html { redirect_to profile_path(@credit.user_id), notice: 'Credito creado exitosamente.' }
-        format.json { render json: @credit, status: :created, location: @credit }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @credit.errors, status: :unprocessable_entity }
+      when "remove"
+          if @credit.amount.abs <= @total_credit
+            respond_to do |format|
+              if @credit.save
+                format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos descontados exitosamente.' }
+                format.json { render json: @credit, status: :created, location: @credit }
+              else
+                format.html { render action: "new" }
+                format.json { render json: @credit.errors, status: :unprocessable_entity }
+              end
+            end
+          
+          else
+            respond_to do |format|
+                format.html { redirect_to profile_path(@credit.user_id), notice: 'El saldo de puntos no es suficiente.' }
+                format.json { render json: @credit, status: :created, location: @credit }
+              end
+          end         
       end
-    end
-
   end
+
+
 
   # PUT /credits/1
   # PUT /credits/1.json

@@ -26,6 +26,8 @@ class ProfilesController < ApplicationController
 
                     when "merchantUser"
                         @credits = Credit.where(:user_id => @user.id, :merchant_id => current_user.merchant_id)
+                        @total_credit = Credit.where(:user_id => @user.id, :merchant_id => current_user.merchant_id).sum(:amount)
+
 
                     when "user"
                         @user = User.find(current_user.id)
@@ -43,7 +45,7 @@ class ProfilesController < ApplicationController
     def qrcode
     	@user = User.find(params[:id])
     		if @user
-                @qr = RQRCode::QRCode.new( 'http://sheltered-chamber-1367.herokuapp.com/profiles/'+@user.id.to_s, :size => 8, :level => :h )
+                @qr = RQRCode::QRCode.new( 'http://sheltered-chamber-1367.herokuapp.com/qrcode/'+@user.id.to_s, :size => 8, :level => :h )
 
     		else
     			render file 'public/404', status: 404, formats: [:html]
