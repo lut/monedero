@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140318191952) do
+ActiveRecord::Schema.define(:version => 20140319021117) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20140318191952) do
     t.decimal  "geolon",           :precision => 3, :scale => 6
     t.decimal  "lat"
     t.decimal  "lng"
-    t.integer  "phone"
+    t.string   "phone"
     t.text     "description"
     t.string   "hours"
     t.integer  "category_id"
