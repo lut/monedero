@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319021117) do
+ActiveRecord::Schema.define(:version => 20140319031007) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20140319021117) do
     t.string   "website"
     t.string   "twitter"
     t.string   "instagram"
+    t.string   "foursquare"
   end
 
   add_index "merchants", ["category_id"], :name => "index_merchants_on_category_id"

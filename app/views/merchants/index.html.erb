@@ -1,12 +1,33 @@
-<ul class="list-group">
-    <% if current_user.try(:admin?) %>
-      <a href="/merchants/new" class="list-group-item icon-plus-sm">Crear nuevo comercio</a>
-      <% end %>
-      
-    <% @merchants.each do |merchant| %>
-        <a href="/merchants/<%= merchant.id %>" class="list-group-item <%= Category.find(merchant.category_id).icon %>"><%= merchant.name %></a>
-    <% end %>
-</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+
+			<ul class="list-group">
+			    <% if current_user.try(:admin?) %>
+			      <a href="/merchants/new" class="list-group-item icon-plus-sm">Crear nuevo comercio</a>
+			      <% end %>
+			      
+			    <% @merchants.each do |merchant| %>
+			        <a href="/merchants/<%= merchant.id %>" class="list-group-item <%= Category.find(merchant.category_id).icon %>">
+			        	<% if not(merchant.logo.nil?) %>
+			        		<%= image_tag("#{ merchant.logo }") %>
+			        	<% else %>
+			        		<%= merchant.name %>
+			        	<% end %>
+			        </a>
+			    <% end %>
+			</ul>
+			
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
+
+
+
+
+<br><br><br><br><br><br><br>
 
                
 

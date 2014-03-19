@@ -20,8 +20,8 @@
 							<% if not(@merchant.phone.nil?) %><li class="list-group-item icon-phone"><%= @merchant.phone %></li><% end %> 
 							<% if not(@merchant.email.nil?) %><li class="list-group-item icon-mail"><%= @merchant.email %></li><% end %> 
 							<% if not(@merchant.hours.nil?) %><li class="list-group-item icon-alarm"><%= @merchant.hours %></li><% end %> 
-							<% if not(@merchant.website.nil?) %><a class="list-group-item icon-globe" href="<%= @merchant.website %>">Website</a><% end %> 
-							<% if not(@merchant.facebook.nil?) %><a class="list-group-item icon-facebook" href="<%= @merchant.facebook %>">Facebook</a><% end %> 	
+							<% if not(@merchant.website.nil?) %><a class="list-group-item icon-globe" href="<%= @merchant.website %>" target="_blank">Website</a><% end %> 
+							<% if not(@merchant.facebook.nil?) %><a class="list-group-item icon-facebook" href="<%= @merchant.facebook %>" target="_blank">Facebook</a><% end %> 	
 						</ul>
 				</div>
 			</div>
