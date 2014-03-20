@@ -140,7 +140,7 @@ class CreditsController < ApplicationController
     end
   end
 
-  def create_expired_lines
+  def self.create_expired_lines
 
     @expired_credit = Credit.where(:expires_on => Date.today, :has_expired => false)
 
