@@ -9,11 +9,13 @@
 				<tr>
 					<th>ID</th>
 					<th>Comercio</th>
+					<th>Usuario</th>
 					<th>Importe Compra</th>
 					<th>Conversión</th>
 					<th>Puntos</th>
 					<th>Fecha/Hora Otorgado</th>
 					<th>Vence</th>
+					<th>Expiro</th>
 				</tr>
 				
 				<% @credits.each do |credit| %>
@@ -21,11 +23,13 @@
 
 					<td><%= credit.id %></td>
 					<td><%= credit.merchant.name %></td>
+					<td><%= credit.user_id %></td>
 					<td><%= credit.purchase_amount %></td>
 					<td><%= credit.convertion_rate %></td>
 					<td><%= credit.amount %></td>
 					<td><%= credit.created_at %></td>
 					<td><%= credit.expires_on %></td>
+					<td><%= credit.has_expired %></td>
 				</tr>
 			<% end %>   
 			</table>
@@ -43,6 +47,7 @@
 			<table class="table table-striped table-hover">
 				<tr>
 					<th>ID</th>
+					<th>Usuario</th>
 					<th>Importe Compra</th>
 					<th>Conversión</th>
 					<th>Puntos</th>
@@ -54,6 +59,7 @@
 				<tr>
 
 					<td><%= credit.id %></td>
+					<td><%= credit.user_id %></td>
 					<td><%= credit.purchase_amount %></td>
 					<td><%= credit.convertion_rate %></td>
 					<td><%= credit.amount %></td>
@@ -79,3 +85,6 @@
 			</div>
 		<% end %>
 <% end %>
+
+
+<br><br><br><br>

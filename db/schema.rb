@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319031007) do
+ActiveRecord::Schema.define(:version => 20140320194030) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20140319031007) do
 
   create_table "credits", :force => true do |t|
     t.integer  "amount"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
     t.integer  "user_id"
     t.integer  "merchant_id"
     t.string   "credit_type"
@@ -31,11 +31,12 @@ ActiveRecord::Schema.define(:version => 20140319031007) do
     t.integer  "purchase_amount"
     t.decimal  "convertion_rate", :precision => 2, :scale => 2
     t.date     "expires_on"
+    t.boolean  "has_expired",                                   :default => false
   end
 
   create_table "merchants", :force => true do |t|
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
     t.text     "name"
     t.decimal  "geolat"
     t.decimal  "geolon",           :precision => 3, :scale => 6
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20140319031007) do
     t.string   "twitter"
     t.string   "instagram"
     t.string   "foursquare"
+    t.integer  "months_to_expire",                               :default => 3
   end
 
   add_index "merchants", ["category_id"], :name => "index_merchants_on_category_id"

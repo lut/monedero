@@ -68,7 +68,8 @@ class CreditsController < ApplicationController
       when "add"
         @credit.convertion_rate = Merchant.find(@credit.merchant_id).convertion_rate
         @credit.amount = @credit.purchase_amount * @credit.convertion_rate
-        @credit.expires_on = Date.today + 3.month
+        @credit.expires_on = Date.today + Merchant.find(@credit.merchant_id).months_to_expire
+
 
       when "remove"
         @credit.amount = -@credit.amount
@@ -139,7 +140,38 @@ class CreditsController < ApplicationController
     end
   end
 
-       
+  def create_expired_lines
+
+    @expired_credit = Credit.where(:expires_on => Date.today, :has_expired => false)
+
+    @expired_credit.each do |credit|
+
+      @user_outcome = Credit.where(:user_id => credit.user_id, :merchant_id => credit.merchant_id).where("amount<?",0).sum(:amount).abs
+      @user_total_expired = Credit.where(:user_id => credit.user_id, :merchant_id => credit.merchant_id, :has_expired => true).sum(:amount)
+
+      @user_available = (@user_outcome - @user_total_expired).abs
+
+      @credit_to_deduct = credit.amount - @user_available
+
+      if @credit_to_deduct > 0
+
+        @new_credit = Credit.new(params[:credit])
+        @new_credit.amount =  -(@credit_to_deduct)               
+        @new_credit.user_id =     credit.user_id
+        @new_credit.merchant_id = credit.merchant_id
+        @new_credit.credit_type = "expirationBalance"
+        @new_credit.assigned_by = "admin"
+
+        @new_credit.save
+
+      end
+
+      credit.has_expired = true
+      credit.update_attributes(params[:credit])
+
+    end  
+  end
+
 
   private
     def adminOrMerchant_user
