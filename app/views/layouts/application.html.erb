@@ -27,7 +27,7 @@
 
 
 <!-- Fixed Navigation Bar ==========-->
-	 <div class="navbar navbar-default navbar-fixed-top navbar-custom">
+	 <div class="navbar navbar-inverse navbar-fixed-top">
     	<div class="container">
       <div class= "navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -79,40 +79,70 @@
 
 <!--Bottom Nav Bar-->
 
-
-
-
 <% if user_signed_in? %>
-	<ul class="nav nav-justified navbar-fixed-bottom nav-tabs nav-tabs-custom">
+	<div id="footer">
+
 
 	
 	<% if current_user.try(:admin?) %>
-		  <li class="<%= 'active' if params[:controller] == 'merchants' %>"> <a href="/merchants" >Comercios</a> </li>
-		  <li class="<%= 'active' if params[:controller] == 'credits' %>"> <a href="/credits">Creditos</a> </li>
-		  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/profiles">Usuarios</a> </li>        
+
+		<div class="col-xs-12 navbar-custom navbar-inverse navbar-fixed-bottom">
+			<div class="row navbar-custom" id="bottomNav">
+
+
+				<a href="/merchants"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'merchants' %> ">Comercios</div></a>
+
+				<a href="/credits"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'credits' %>">Creditos</div></a>
+
+				<a href="/profiles"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'profiles' %>">Usuarios</div></a>
+			</div>
+		</div>
+
 	<% else %>
 
 <!-- is Merchant User? -->
 		<%if current_user.try(:isMerchantUser?) %>
 
-			<ul class="nav nav-justified navbar-fixed-bottom nav-tabs">
-			  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/profiles">Usuarios</a> </li>
-			  <li class="<%= 'active' if params[:controller] == 'credits' %>"> <a href="/credits">Creditos</a> </li>      
+		<div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
+			<div class="row" id="bottomNav">
+
+				<a href="/profiles"><div class="col-xs-6 text-center <%= 'active' if params[:controller] == 'profiles' %> icon-user"></div></a>
+
+				<a href="/credits"><div class="col-xs-6 text-center <%= 'active' if params[:controller] == 'credits' %> icon-credit"></div></a>
+
+			</div>
+		</div>
+ 
 
 		<% else %>
 
 <!-- Regular Signed-in User -->
 
-			<ul class="nav nav-justified navbar-fixed-bottom nav-tabs">
-			  <li class="<%= 'active' if params[:controller] == 'merchants' %>"> <a href="/merchants" class="icon-flag"></a> </li>
-			  <li class="<%= 'active' if params[:controller] == 'qrcodes' %>"> <a href="/qrcode/<%= current_user.id %>" class="icon-qrcode"></a> </li>
-			  <li class="<%= 'active' if params[:controller] == 'profiles' %>"> <a href="/profiles/<%= current_user.id %>" class="icon-credit"></a> </li>       
+			<div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
+				
+				<div class="row" id="bottomNav">
+				<a href="/merchants"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'merchants' %> icon-flag"></div></a>
+
+				<a href="/qrcode/<%= current_user.id %>"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'qrcode' %> icon-qrcode"></div></a>
+
+				<a href="/profiles/<%= current_user.id %>"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'profiles' %> icon-user"></div></a>
+				</div>
+			</div>
 
 			<% end %>
 		<% end %>
 
-	</ul>
+
+	</div>
+
 <% end %>
+
+  
+
+
+
+
+
 
 </body>
 </html>

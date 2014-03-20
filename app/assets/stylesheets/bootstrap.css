@@ -4546,6 +4546,10 @@ border-bottom:0px;
   border: 1px solid transparent;
 }
 
+.navbar-custom{
+height: 50px;
+}
+
 .navbar:before,
 .navbar:after {
   display: table;

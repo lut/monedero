@@ -10,11 +10,7 @@
 			      
 			    <% @merchants.each do |merchant| %>
 			        <a href="/merchants/<%= merchant.id %>" class="list-group-item <%= Category.find(merchant.category_id).icon %>">
-			        	<% if not(merchant.logo.nil?) %>
-			        		<%= image_tag("#{ merchant.logo }") %>
-			        	<% else %>
-			        		<%= merchant.name %>
-			        	<% end %>
+			 		<%= merchant.name %>	
 			        </a>
 			    <% end %>
 			</ul>
