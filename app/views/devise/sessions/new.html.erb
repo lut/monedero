@@ -1,22 +1,53 @@
-<div data-role="content">
-<br><br><br>
-
-		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: "well"}) do |f| %>
-		  
-		  <fieldset>
-		  <%= f.input :email %>
-		  <%= f.input :password, label: "Contraseña" %>
-
-		  <% if devise_mapping.rememberable? -%>
-		    <div><%= f.input :remember_me, as: :boolean, label: "Recordarme" %></div>
-		  <% end -%>
-
-		  <div><%= f.button :submit, "Iniciar sesión" %></div>
-		<% end %>
-
-		</fieldset>
-
-		<%= render "devise/shared/links" %>
+<br>
 	
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 panel">
+
+          <h2 class="page-header">Iniciar Sesión</h2>
+
+
+			<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			<%= devise_error_messages! %>
+			<form class="form-horizontal">
+
+
+			<div class="form-group">
+			<%= f.email_field :email, :autofocus => true, :placeholder => 'Email' %>
+			</div>
+
+			<div class="form-group">
+			<%= f.password_field :password, :placeholder => "Contraseña"%>
+			</div>
+
+
+
+
+
+			<% if devise_mapping.rememberable? -%>
+			<div class="form-group">
+			<%= f.input :remember_me, as: :boolean, label: "Recordarme" %>
+			</div>
+			<div></div>
+			<% end -%>
+
+			<div><%= f.button :submit, "Iniciar sesión", :class=> 'btn btn-primary' %></div>
+			<% end %>
+
+			<br>
+			<%= render "devise/shared/links" %>
+			<br>
+
+
+
+			</form>
+
+    </div>
+    <div class="col-md-3"></div>
+  </div>
 </div>
+
+
+
 

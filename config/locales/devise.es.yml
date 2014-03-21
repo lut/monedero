@@ -1,4 +1,4 @@
-en:
+es:
   devise:
     confirmations:
       confirmed: Tu cuenta ha sido satisfactoriamente confirmada.
@@ -26,9 +26,9 @@ en:
       failure: No has sido autorizado en la cuenta %{kind} porque "%{reason}".
       success: Has sido autorizado satisfactoriamente de la cuenta %{kind}.
     passwords:
-      no_token: No puedes acceder a esta página si no es a través de un un enlace para resetear tu contraseña. Si has llegado hasta aquí desde el email para resetear tu contraseña, por favor asegúrate de que la URL introducida está completa.
-      send_instructions: Vas a recibir un correo con instrucciones sobre cómo resetear tu contraseña en unos pocos minutos.
-      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, vas a recibir un correo con instrucciones sobre cómo resetear tu contraseña en tu bandeja de entrada.
+      no_token: No puedes acceder a esta página si no es a través de un un enlace para reestablecer tu contraseña. Si has llegado hasta aquí desde el email para reestablecer tu contraseña, por favor asegúrate de que la URL introducida está completa.
+      send_instructions: Vas a recibir un correo con instrucciones sobre cómo reestablecer tu contraseña en unos pocos minutos.
+      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, vas a recibir un correo con instrucciones sobre cómo reestablecer tu contraseña en tu bandeja de entrada.
       updated: Tu contraseña fue cambiada. Ya iniciaste sesión.
       updated_not_active: Tu contraseña fue cambiada.
     registrations:
@@ -40,8 +40,9 @@ en:
       update_needs_confirmation: Has actualizado tu cuenta correctamente, pero es necesario confirmar tu nuevo correo electrónico. Por favor, comprueba tu correo y sigue el enlace de confirmación para finalizar la comprobación del nuevo correo eletrónico.
       updated: Tu cuenta fue actualizada.
     sessions:
-      signed_in: Sesión iniciada.
-      signed_out: Sesión finalizada.
+      user:
+        signed_in: Sesión iniciada.
+        signed_out: Sesión finalizada.
     unlocks:
       send_instructions: Vas a recibir instrucciones para desbloquear tu cuenta en unos pocos minutos.
       send_paranoid_instructions: Si tu cuenta existe, vas a recibir instrucciones para desbloquear tu cuenta en unos pocos minutos.

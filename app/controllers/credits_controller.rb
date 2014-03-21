@@ -15,6 +15,13 @@ class CreditsController < ApplicationController
     end
   end
 
+  def all
+    @merchant = Merchant.find(params[:id])
+    @credits = Credit.where(:user_id => current_user.id, :merchant_id => @merchant.id)
+    @credits_sum = Credit.where(:user_id => current_user.id, :merchant_id => @merchant.id).sum(:amount) 
+
+  end
+
   # GET /credits/1
   # GET /credits/1.json
   def show

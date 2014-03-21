@@ -54,7 +54,11 @@ class ProfilesController < ApplicationController
     end
 
     def faqs
-        render file 'public/faqs', formats: [:html]
+        
+    end
+
+    def terms
+        
     end
 
 

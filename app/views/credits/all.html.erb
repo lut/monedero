@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-8">
+
+			<h4>Tus Puntos en:
+				<a href="/merchants/<%= @merchant.id %>"><%= @merchant.name %></a>
+			</h4>
+
+			<ul class="list-group">
+					<li class="list-group-item">Puntos disponibles: 
+						<span class="badge alert-info"><%= @credits_sum %></span>
+					</li>
+					<% @credits.each do |credit| %>
+					<li class="list-group-item"><%= credit.created_at.to_formatted_s(:short) %>
+						<% if credit.amount > 0  %>
+							<span class="badge alert-success"><%= credit.amount %></span>
+						<% else %>
+							<span class="badge alert-danger"><%= credit.amount %></span>
+						<% end %>
+					</li>
+					<% end %>
+				</ul>
+
+		</div>
+		<div class="col-xs-2"></div>
+	</div> 
+</div>
+
+				

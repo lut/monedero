@@ -36,22 +36,20 @@
           <span class="icon-bar"></span>
         </button>
 
-        <a href="#" class="navbar-brand"><span class="icon-gift"></span>Volverás!</a>
+        <a href="/" class="navbar-brand"><span class="icon-gift"></span>Volverás!</a>
       </div>
 
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
 	        <!-- User signed-in? -->
-	        <% if user_signed_in? %>     
-					<li class="dropdown">
-			            <a href="#" class="dropdown-toggle" data-toggle="dropdown"=><%= current_user.first_name%> <b class="caret"></b></a>
-			              <ul class="dropdown-menu">
-			                <li><%= link_to "Ajustes", edit_user_registration_path, class: "icon-cog" %></li>
-			                <li><%= link_to "Preguntas frecuentes", faqs_path, class: "icon-wondering" %></li>
-			                <li><%= link_to "Términos y Condiciones", edit_user_registration_path, class: "icon-books" %></li>       
-       			            <li><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "icon-exit" %></li>
-			              </ul>  
-					</li>
+	        <% if user_signed_in? %>    
+
+					
+					<li><a href="/myaccount" class: "icon-user-small" ><%=  current_user.first_name %></a></li>
+					<li><%= link_to "FAQS", faqs_path, class: "icon-wondering" %></li>
+					<li><%= link_to "Términos y Condiciones", terms_path, class: "icon-books" %></li> 
+					<li><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "icon-exit" %></li>
+
 
 
 				<% else %>
@@ -64,7 +62,7 @@
   </div>
 
 <!-- Flash Messagges====-->
-<br><br>
+<br>
 <div class="container">
 	<% flash.each do | type, message | %>
 			<div class="alert <%= flash_class type %>">
@@ -72,7 +70,7 @@
   			<%= message %>
 		</div>
 		<% end %>
-	
+		<br>
 	<%= yield %>
 </div>
 
@@ -86,17 +84,13 @@
 	
 	<% if current_user.try(:admin?) %>
 
-		<div class="col-xs-12 navbar-custom navbar-inverse navbar-fixed-bottom">
-			<div class="row navbar-custom" id="bottomNav">
-
-
-				<a href="/merchants"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'merchants' %> ">Comercios</div></a>
-
-				<a href="/credits"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'credits' %>">Creditos</div></a>
-
-				<a href="/profiles"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'profiles' %>">Usuarios</div></a>
-			</div>
+	<div class="col-xs-12 navbar-custom navbar-inverse navbar-fixed-bottom">
+		<div class="row navbar-custom" id="bottomNav">
+			<a href="/merchants"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'merchants' %> ">Comercios</div></a>
+			<a href="/credits"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'credits' %>">Creditos</div></a>
+			<a href="/profiles"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'profiles' %>">Usuarios</div></a>
 		</div>
+	</div>
 
 	<% else %>
 
@@ -125,7 +119,7 @@
 
 				<a href="/qrcode/<%= current_user.id %>"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'qrcode' %> icon-qrcode"></div></a>
 
-				<a href="/profiles/<%= current_user.id %>"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'profiles' %> icon-user"></div></a>
+				<a href="/profiles/<%= current_user.id %>"><div class="col-xs-4 text-center <%= 'active' if params[:controller] == 'profiles' %> icon-credit"></div></a>
 				</div>
 			</div>
 

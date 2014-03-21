@@ -1,0 +1,21 @@
+<div class="jumbotron">
+	<% if user_signed_in? %>
+		<h1>Bienvenido de vuelta!</h1>
+		<p class="lead">
+			Ya iniciaste sesión! Ahora estás listo para disfrutar de los beneficios...
+		</p>
+
+	<% else %>
+		<h1>Bienvenido!</h1>
+		<p>
+			Debes iniciar sesión o registrarte para tener acceso a los beneficios exclusivos.
+		</p>
+
+		<div class="row-fluid">
+			<div class="span6">
+				<%= link_to "Registrarme", new_user_registration_path, :class => "btn btn-success" %>
+			</div>
+		</div>
+
+	<% end %>
+</div>

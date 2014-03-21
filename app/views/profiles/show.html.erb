@@ -84,7 +84,6 @@
 <!-- User View ===================-->
 
 	<% when 'user' %> 
-		<h1>Mis puntos</h1> 
 
 	<!-- User Has no credits ===================-->
 
@@ -118,17 +117,34 @@
 				</div> <br><br> 
 
 				<% else %> 
-					
-					<!-- User has at least one credit --> 
 
-					<ul class="list-group"> 
+
+
+				<div class="container">	
+				  <div class="row">
+				    <div class="col-md-3"></div>
+				    <div class="col-md-6">
+
+				    	<ul class="list-group"> 
 						<% @credit_per_merchant.each do |key, value| %> 
 							<a href="/merchants/<%= key %>"class="list-group-item"><p><%= Merchant.find(key).name %>:  <%= value %> puntos</p></a> 
 						<% end %> 
 					</ul> 
+
+				    </div>
+				    <div class="col-md-3"></div>
+				  </div>
+				</div>
+
+					
+					<!-- User has at least one credit --> 
+
+					
 
 			<% end %> 
 
 <% end %>
 
 <br><br><br><br>
+
+
