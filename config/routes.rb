@@ -12,6 +12,7 @@ get 'home', to: 'staticpages#home'
 get 'credits/all/:id', to: 'credits#all'
 get 'myaccount', to: 'profiles#account'
 get 'send_email', to: 'profiles#send_email'
+get 'create_expired_lines', to: 'credits#create_expired_lines'
 
 # get 'users/:id', to: 'users#show'
 

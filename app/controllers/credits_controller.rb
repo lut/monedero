@@ -162,7 +162,7 @@ class CreditsController < ApplicationController
 
       if @credit_to_deduct > 0
 
-        @new_credit = Credit.new()
+        @new_credit = Credit.new
         @new_credit.amount =  -(@credit_to_deduct)               
         @new_credit.user_id =     credit.user_id
         @new_credit.merchant_id = credit.merchant_id
@@ -174,7 +174,7 @@ class CreditsController < ApplicationController
       end
 
       credit.has_expired = true
-      credit.update_attributes()
+      credit.save
 
     end  
   end
