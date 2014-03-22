@@ -14,6 +14,10 @@ class ProfilesController < ApplicationController
 	    end
   	end
 
+    def send_email
+        Mensajero.email_name.deliver
+    end
+
 
 
 	def show

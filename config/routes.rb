@@ -11,6 +11,7 @@ get 'terms', to: 'profiles#terms'
 get 'home', to: 'staticpages#home'
 get 'credits/all/:id', to: 'credits#all'
 get 'myaccount', to: 'profiles#account'
+get 'send_email', to: 'profiles#send_email'
 
 # get 'users/:id', to: 'users#show'
 
