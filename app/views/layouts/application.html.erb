@@ -46,6 +46,9 @@
 
 					
 					<li><a href="/myaccount" class: "icon-user-small" ><%=  current_user.first_name %></a></li>
+					<% if current_user.role == "merchantUser" %>
+					<li><a href="/merchants/setup" class: "icon-cog" >Configurar</a></li>
+					<% end %>
 					<li><%= link_to "FAQS", faqs_path, class: "icon-wondering" %></li>
 					<li><%= link_to "Términos y Condiciones", terms_path, class: "icon-books" %></li> 
 					<li><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "icon-exit" %></li>

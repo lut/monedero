@@ -22,6 +22,8 @@ es:
                 confirmation: La confirmación de la contraseña es inválida.
                 blank: debes ingresar una contraseña por favor.
                 too_short: el password debe de ser al menos de 8 dígitos.
+              current_password: 
+                blank: debes ingresar tu contraseña actual para confirmar los cambios.
               email:
                 invalid: El email es invalido. 
                 blank: debes ingresar un email por favor.

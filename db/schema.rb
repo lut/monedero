@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140320194030) do
+ActiveRecord::Schema.define(:version => 20140323012353) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -34,19 +34,28 @@ ActiveRecord::Schema.define(:version => 20140320194030) do
     t.boolean  "has_expired",                                   :default => false
   end
 
+  create_table "memberships", :force => true do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "memberships", ["name"], :name => "index_memberships_on_name"
+
   create_table "merchants", :force => true do |t|
-    t.datetime "created_at",                                                    :null => false
-    t.datetime "updated_at",                                                    :null => false
+    t.datetime "created_at",                                                              :null => false
+    t.datetime "updated_at",                                                              :null => false
     t.text     "name"
     t.decimal  "geolat"
-    t.decimal  "geolon",           :precision => 3, :scale => 6
+    t.decimal  "geolon",                 :precision => 3, :scale => 6
     t.decimal  "lat"
     t.decimal  "lng"
     t.string   "phone"
     t.text     "description"
     t.string   "hours"
     t.integer  "category_id"
-    t.decimal  "convertion_rate",  :precision => 2, :scale => 2
+    t.decimal  "convertion_rate",        :precision => 2, :scale => 2
     t.string   "address_street"
     t.string   "address_number"
     t.string   "address_city"
@@ -60,7 +69,10 @@ ActiveRecord::Schema.define(:version => 20140320194030) do
     t.string   "twitter"
     t.string   "instagram"
     t.string   "foursquare"
-    t.integer  "months_to_expire",                               :default => 3
+    t.integer  "months_to_expire",                                     :default => 3
+    t.integer  "membership_id"
+    t.boolean  "give_out_birthday_gith",                               :default => false
+    t.integer  "birthday_gift"
   end
 
   add_index "merchants", ["category_id"], :name => "index_merchants_on_category_id"
@@ -94,9 +106,12 @@ ActiveRecord::Schema.define(:version => 20140320194030) do
     t.boolean  "isMerchantUser",         :default => false
     t.integer  "merchant_id"
     t.string   "role",                   :default => "user"
+    t.date     "birthdate"
+    t.string   "gender"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["first_name"], :name => "index_users_on_first_name"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

@@ -1,23 +1,34 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+    	<div class="panel panel-default">
+			<div class="panel-heading">Mi cuenta</div>
+				<div class="panel-body">
+					<p>Nombre: <%= current_user.first_name %></p><br>
+					<p>Apellido: <%= current_user.last_name %></p><br>
+					<p>Email: <%= current_user.email %></p><br>
 
-     			<div class="panel panel-default">
-					<div class="panel-heading">Mi cuenta</div>
-						<div class="panel-body">
-							<p><%= current_user.first_name %></p><br>
-							<p><%= current_user.email %></p><br>
 
-						
+					 <% if current_user.role == "user"%>
+						<p>Fecha nacimiento: <%= current_user.birthdate %></p><br>
+						<p>Sexo: <%= current_user.gender %></p><br>
+					<% end %>
 
-						</div>
+					<p>Contraseña: ********</p><br>
 
+
+					<a href="/users/edit"><button class="btn btn-primary">Editar mi cuenta</button></a>
 				</div>
+		</div>
+
+    </div>
+    <div class="col-md-4">
+
+     			
 
 			
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-4"></div>
   </div>
 </div>
 

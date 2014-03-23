@@ -1,10 +1,11 @@
 class MerchantsController < ApplicationController
-  before_filter :admin_user, only: [:new, :edit, :create, :update, :destroy]
+  before_filter :admin_user, only: [:new, :create, :destroy]
+  before_filter :adminOrMerchant_user, only: [:edit, :update]
+
+
   
   def index
     @merchants = Merchant.all
-
-
 
     respond_to do |format|
       format.html # index.html.erb
@@ -70,13 +71,19 @@ class MerchantsController < ApplicationController
 
     respond_to do |format|
       if @merchant.update_attributes(params[:merchant])
-        format.html { redirect_to @merchant, notice: 'Comercio actualizado exitosamente' }
+        format.html { redirect_to merchants_setup_path, notice: 'Comercio actualizado exitosamente' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
         format.json { render json: @merchant.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def setup
+    @merchant = Merchant.find(current_user.merchant_id)
+    @team = User.where(:merchant_id => current_user.merchant_id)
+
   end
 
   # DELETE /merchants/1
@@ -94,6 +101,10 @@ class MerchantsController < ApplicationController
   private
     def admin_user
       redirect_to(root_path) unless current_user.admin?
+    end
+
+    def adminOrMerchant_user
+      redirect_to(root_path) unless (current_user.admin? | current_user.isMerchantUser?)
     end
 
     def signed_in_user

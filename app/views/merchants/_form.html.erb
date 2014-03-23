@@ -1,33 +1,82 @@
+<div class="container">
+<%= simple_form_for(@merchant) do |f| %>
+	<%= f.error_notification %>
+  
+  <div class="row">
+    <div class="col-md-4">
+		<div class="panel panel-default">
+			<div class="panel-heading">Datos Generales</div>
+			<div class="panel-body">
+				<%= f.input :name, label: 'Comercio', required: true, as: :string %>
+				<%= f.input :category_id, collection: Category.all, required: true, label: "Categoría" %>
+				<%= f.input :phone, label: 'Telefono', as: :string %>
+				<%= f.input :email, label: 'Email', as: :string  %>
+				<%= f.input :hours, label: 'Horas de operacion' %>
+			</div>	
+		</div>
+    </div>
 
-		<%= simple_form_for(@merchant, html: {class: "well"}) do |f| %>
-	  	<%= f.error_notification %>
-		<%= f.input :name, label: 'Comercio', required: true, as: :string %>
-		<%= f.input :category_id, collection: Category.all, required: true %>
-		<%= f.input :geolat, label: 'Latitud' %>
-		<%= f.input :geolon, label: 'Longitud' %>
-		<%= f.input :hours, label: 'Horas de operacion' %>
-		<%= f.input :phone, label: 'Telefono' %>
-		<%= f.input :description, label: 'Descripcion' %>
-		<%= f.input :convertion_rate, label: 'Tasa de conversion' %>
+    <div class="col-md-4">
 
-		<%= f.input :address_street, label: 'Calle' %>
-		<%= f.input :address_number, label: 'Numero' %>
-		<%= f.input :address_city, label: 'Ciudad' %>
-		<%= f.input :address_state, label: 'Estado' %>
-		<%= f.input :address_zip_code, label: 'Codigo Postal' %>
-
-
-		<%= f.input :logo, label: 'Logo' %>
-		<%= f.input :email, label: 'Email' %>
-		<%= f.input :facebook, label: 'Facebook' %>
-		<%= f.input :website, label: 'Sitio Web' %>
-		<%= f.input :twitter, label: 'Twitter' %>
-		<%= f.input :instagram, label: 'Instagram' %>
-
-
-
-			<div class="form-actions">
-			   <%= f.button :submit, label: 'Actualizar datos' %>
+		<div class="panel panel-default">
+			<div class="panel-heading">Configuración de créditos</div>
+			<div class="panel-body">
+				<%= f.input :convertion_rate, label: 'Porcentaje de créditos por compra' %>
+				<%= f.input :months_to_expire, label: 'Período de vigencia (meses)' %>
+				<div class="page-header">Regalo en tu cumpleaños</div>
+				<%= f.input :give_out_birthday_gith, label: 'Dar regalo' %>
+				<%= f.input :birthday_gift, label: 'Cantidad (puntos)' %>
 			</div>
-		<% end %>
+		</div>
+
+    </div>
+
+    <div class="col-md-4">
+    	<div class="panel panel-default">
+			<div class="panel-heading">Redes Sociales</div>
+			<div class="panel-body">
+				<%= f.input :facebook, label: 'Facebook' %>
+				<%= f.input :website, label: 'Sitio Web' %>
+				<%= f.input :twitter, label: 'Twitter' %>
+				<%= f.input :instagram, label: 'Instagram' %>
+				<%= f.input :logo, label: 'Logo' %>
+			</div>	
+		</div>    	
+		
+
+    </div>
+  </div>
+
+  <div class="row">
+  	<div class="col-md-4">
+  		<div class="panel panel-default">
+			<div class="panel-heading">Dirección</div>
+
+			<div class="panel-body">
+				<%= f.input :address_street, label: 'Calle' %>
+				<%= f.input :address_number, label: 'Numero' %>
+				<%= f.input :address_city, label: 'Ciudad' %>
+				<%= f.input :address_state, label: 'Estado' %>
+				<%= f.input :address_zip_code, label: 'Codigo Postal' %>
+				<%= f.input :geolat, label: 'Latitud' %>
+				<%= f.input :geolon, label: 'Longitud' %>						
+			</div>		
+		</div>
+  	</div>
+  	<div class="col-md-4">
+
+
+  	</div>
+
+  	<div class="col-md-4">
+  		<div><%= f.submit "Actualizar datos", :class=> 'btn btn-primary' %></div>
+  	</div>
+
+  </div>
+
+<% end %>
+
+</div>
+
+<br><br>
 

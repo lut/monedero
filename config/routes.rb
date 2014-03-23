@@ -1,6 +1,10 @@
 Treebook::Application.routes.draw do
 
+  resources :memberships
+
+
 root to: "merchants#index"
+get 'merchants/setup', to: 'merchants#setup'
 resources :merchants, :credits, :profiles, :categories, :rewards
 
 
