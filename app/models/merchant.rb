@@ -3,7 +3,7 @@ class Merchant < ActiveRecord::Base
   					:convertion_rate, :address_street, :address_number, :address_city,
   					:address_state, :address_zip_code, :address_country,
   					:logo, :email, :facebook, :website, :twitter, :instagram, :months_to_expire, 
-  					:give_out_birthday_gith, :birthday_gift
+  					:give_out_birthday_gith, :birthday_gift, :membership_id
 
   has_many :credits
   has_many :users
