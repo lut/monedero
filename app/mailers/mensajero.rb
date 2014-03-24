@@ -4,4 +4,14 @@ class Mensajero < ActionMailer::Base
          :to      => "lutgardo21@gmail.com",
          :from    => "lutgardo21@gmail.com"
   end
+
+  def credits_expiring_soon
+    mail :subject => "Tienes puntos que están por caducar!",
+         :to      => "lutgardo21@gmail.com",
+         :from    => "lutgardo21@gmail.com"
+         :message =>
+
+         
+  end
+
 end

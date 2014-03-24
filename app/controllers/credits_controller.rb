@@ -75,7 +75,7 @@ class CreditsController < ApplicationController
       when "add"
         @credit.convertion_rate = Merchant.find(@credit.merchant_id).convertion_rate
         @credit.amount = @credit.purchase_amount * @credit.convertion_rate
-        @credit.expires_on = Date.today + Merchant.find(@credit.merchant_id).months_to_expire
+        @credit.expires_on = Date.today + Merchant.find(@credit.merchant_id).months_to_expire.month
 
 
       when "remove"
