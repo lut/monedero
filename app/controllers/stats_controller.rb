@@ -4,7 +4,6 @@ class StatsController < ApplicationController
 
   def show
       
-      @credits_given_today = Credit.where(:merchant_id => current_user.merchant_id, :amount > 0, cre )
 
     end
 
