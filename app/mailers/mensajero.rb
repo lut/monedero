@@ -9,9 +9,6 @@ class Mensajero < ActionMailer::Base
     mail :subject => "Tienes puntos que están por caducar!",
          :to      => "lutgardo21@gmail.com",
          :from    => "lutgardo21@gmail.com"
-         :message =>
-
-         
   end
 
 end
