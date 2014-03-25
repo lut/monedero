@@ -2706,6 +2706,13 @@ input[type="button"].btn-block {
        url('icons/icomoon.svg#icomoon') format('svg');
 }
 
+.icon-bars:before {
+  content: "\e623";
+  font-family: 'IcoMoon';
+  font-size: 40px;
+  padding-right: 10px;
+}
+
 .icon-foursquare:before {
   content: "\e622";
   font-family: 'IcoMoon';

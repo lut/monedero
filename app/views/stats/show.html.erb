@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4>Hoy</h4></div>
+          <div class="panel-body">   
+
+          Ventas: $ <%= @merchant_todays_sale %><br>
+          Puntos otorgados: <%= @merchant_todays_given_credits %><br>
+          Puntos cobrados: <%= @merchant_todays_charged_credits %><br>
+          Balance: <%= @today_balance %><br>
+
+  
+          </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+       <div class="panel panel-default">
+          <div class="panel-heading"><h4>Mes</h4></div>
+          <div class="panel-body">   
+
+          Ventas: $ <%=  @merchant_current_month_sale %><br>
+          Puntos otorgados: <%= @merchant_current_month_given_credits %><br>
+          Puntos cobrados: <%= @merchant_current_month_charged_credits %><br>
+          Balance: <%= @current_month_balance %><br> 
+
+  
+          </div>
+        </div>
+    </div>
+
+  
+
+    <div class="col-md-4">
+      <div class="panel panel-default">
+          <div class="panel-heading"><h4>Siempre</h4></div>
+          <div class="panel-body">   
+
+          Ventas: $ <%=  @merchant_sale %><br>
+          Puntos otorgados: <%= @merchant_given_credits %><br>
+          Puntos cobrados: <%= @merchant_charged_credits %><br>
+          Balance: <%= @balance %><br> 
+  
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      
+
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

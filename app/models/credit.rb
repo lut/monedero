@@ -6,5 +6,11 @@ class Credit < ActiveRecord::Base
 
   validates_presence_of :merchant, :user, :amount
 
+  scope :today, lambda { where("created_at >= :date", :date => Date.today) }							
+  scope :current_month, lambda { where("created_at >= ? AND created_at <= ?", Date.today.beginning_of_month, Date.today.end_of_month) }
 
+  scope :positive, lambda { where("amount>?",0)}
+  scope :negative, lambda { where("amount<?",0)}
+
+ 
 end
