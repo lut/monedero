@@ -18,6 +18,7 @@ get 'myaccount', to: 'profiles#account'
 get 'send_email', to: 'mails#send_email'
 get 'create_expired_lines', to: 'credits#create_expired_lines'
 get 'stats', to: 'stats#show'
+get 'prints', to: 'prints#all'
 
 # get 'users/:id', to: 'users#show'
 
