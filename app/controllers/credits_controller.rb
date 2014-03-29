@@ -61,6 +61,7 @@ class CreditsController < ApplicationController
 
     @credit = Credit.new(params[:credit])
     @credit.assigned_by = current_user.email
+    @user = User.find(@credit.user_id)
 
     if current_user.try(:admin?) 
         else
@@ -88,6 +89,9 @@ class CreditsController < ApplicationController
       when "add"
         respond_to do |format|
           if @credit.save
+
+            UserMailer.new_credit_email(@user).deliver
+
             format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos generados exitosamente.' }
             format.json { render json: @credit, status: :created, location: @credit }
           else
