@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hola! <%= @user.first_name %></h1><br><br>
+    <p>Tienes puntos por caducar: </p><br><br>
+
+    <% @credits_per_merchant.each do |key,value| %>
+            <li class="list-group-item"><%= Merchant.find(key).name %>: <%= value %> puntos</li>
+          <% end %>
+
+    <p>Para ver el total de tus puntos en cada comercio visita <a href="http://www.volveras.mx/merchants %>">su página.</a></p><br/><br>
+  
+    <p>Saludos,</p><br>
+    <p>El equipo de Volverás</p>
+  </body>
+</html>

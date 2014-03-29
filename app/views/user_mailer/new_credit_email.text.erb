@@ -1,0 +1,8 @@
+Hola! <%= @user.first_name %>,
+
+Has ganado <%= @credit.amount %> puntos para consumir en <%= @merchant.name %>.Recuerda que estos puntos son válidos hasta el <%= @credit.expires_on %>.
+
+Para ver el total de tus puntos en <%= @merchant.name %> has clic en http://www.volveras.mx/merchants/<%= @merchant.id %>
+
+ Saludos,
+ <%= @merchant.name %> y el equipo de Volverás

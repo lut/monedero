@@ -61,7 +61,7 @@ class CreditsController < ApplicationController
 
     @credit = Credit.new(params[:credit])
     @credit.assigned_by = current_user.email
-    @user = User.find(@credit.user_id)
+
 
     if current_user.try(:admin?) 
         else
@@ -69,7 +69,6 @@ class CreditsController < ApplicationController
       end
 
     @total_credit = Credit.where(:user_id => @credit.user_id, :merchant_id => @credit.merchant_id).sum(:amount)
-
 
 
       case session[:credit_type]
@@ -90,9 +89,9 @@ class CreditsController < ApplicationController
         respond_to do |format|
           if @credit.save
 
-            UserMailer.new_credit_email(@user).deliver
+            UserMailer.new_credit_email(@credit).deliver
 
-            format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos generados exitosamente.' }
+            format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos generados exitosamente. Se envio un mail de confirmacion al usuario.' }
             format.json { render json: @credit, status: :created, location: @credit }
           else
             format.html { render action: "new" }
@@ -104,7 +103,7 @@ class CreditsController < ApplicationController
           if @credit.amount.abs <= @total_credit
             respond_to do |format|
               if @credit.save
-                format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos descontados exitosamente.' }
+                format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos descontados exitosamente. Se envio un mail de confirmacion al usuario.' }
                 format.json { render json: @credit, status: :created, location: @credit }
               else
                 format.html { render action: "new" }
@@ -182,6 +181,54 @@ class CreditsController < ApplicationController
 
     end  
   end
+
+  def self.credits_expiring_soon
+
+    @users_with_credits_expiring_soon = Credit.expiring_next_7_days.group(:user_id).pluck(:user_id)
+
+    @users_with_credits_expiring_soon.each do |user|
+
+      @credits_per_merchant_expiring_soon = Credit.expiring_next_7_days.where(:user_id => user).group(:merchant_id).sum(:amount)
+
+      UserMailer.credits_expiring_soon(user, @credits_per_merchant_expiring_soon).deliver
+
+    end
+
+  end
+
+  def self.create_birthday_gifts
+
+    @users = User.where(birthdate: Date.today).pluck(:id)
+
+
+    @users.each do |user|
+
+      @merchants = Merchant.where(give_out_birthday_gith: true).where("birthday_gift is NOT NULL").select([:id, :birthday_gift])
+
+      @merchants.each do |merchant,gift|
+
+        @new_credit =             Credit.new
+        @new_credit.amount =      gift         
+        @new_credit.user_id =     user
+        @new_credit.merchant_id = merchant   
+        @new_credit.credit_type = "BirthdayGift"
+        @new_credit.assigned_by = "admin"
+        @new_credit.expires_on = Merchant.find(merchant).months_to_expire
+
+        @new_credit.save
+
+      end
+
+      @credits_per_merchant = Credit.today.where(:credit_type => "BirthdayGift",:user_id => user).select([:merchant_id, :amount])
+      UserMailer.birthday_gift_email(user, @credits_per_merchant).deliver
+
+    end
+
+
+  end
+
+
+
 
 
   private

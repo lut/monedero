@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  after_create :send_welcome_email 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,4 +16,10 @@ class User < ActiveRecord::Base
   def  full_name
   	first_name + " " + last_name
   end
+
+
+    def send_welcome_email
+      UserMailer.welcome_email(self).deliver
+    end
+
 end

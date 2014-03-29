@@ -4,14 +4,18 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @user.first_name %></h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is: <%= @user.first_name %>.<br/>
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <h1>Hola <%= @user.first_name %>!</h1><br><br>
+    <p>Bienvenido a <strong>Volverás</strong>. Tu monedero digital donde podrás acumular puntos y cambiarlos por descuentos en tu consumo y promociones exclusivas.</p><br><br>
+
+    <p>Para comenzar a ganar puntos deberás presentar tu <a href="http://www.volveras.mx/profiles/<%= @user.id %>">código</a> en los comercios participantes. Cada comercio te dará distinta cantidad de puntos por tu consumo. Esto lo podrás consultar en la página de cada comercio.</p><br><br>
+
+    <p>Para pagar con puntos deberás igualmente mostrar tu <a href="http://www.volveras.mx/profiles/<%= @user.id %>">código</a>. Sólo tienes un código y te sirve para todos los comercios. Todos tus puntos equivalen a $1.00 peso. En la página de cada comercio podrás consultar cuántos puntos tienes así como su caducidad. Recuerda que los puntos sólo son válidos para ese comercio.</p><br><br>
+
+    <p>Algunos comercios venden paquetes de puntos a un precio preferencial. !Si eres cliente frecuente seguramente te conviene!</p><br><br>
+
+    <p>Si tienes más dudas puedes consultar la sección de <a href="http://www.volveras.mx/faqs">preguntas frecuentes.</a></p><br><br>
+
+    <p>Saludos,</p><br>
+    <p>El equipo de Volverás</p>
   </body>
 </html>

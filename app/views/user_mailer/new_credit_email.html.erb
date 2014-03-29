@@ -4,12 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Excelente! <%= @user.first_name %> Se te han abonado puntos.</h1>
-    <p>
-      Para ver tus puntos has login www.volveras.mx<br/>
-    </p>
-    <p>
-    </p>
-    <p>Que tengas un excelente dia!</p>
+    <h1>Hola! <%= @user.first_name %></h1><br><br>
+    <p>Has ganado <%= @credit.amount %> puntos para consumir en <strong><%= @merchant.name %></strong>. Recuerda que estos puntos son válidos hasta el <%= @credit.expires_on %>.</p><br><br>
+
+    <p>Para ver el total de tus puntos en <%= @merchant.name %> has clic <a href="http://www.volveras.mx/merchants/<%= @merchant.id %>">aquí.</a></p><br/><br>
+  
+    <p>Saludos,</p><br>
+    <p><%= @merchant.name %> y el equipo de Volverás</p>
   </body>
 </html>
