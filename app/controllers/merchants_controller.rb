@@ -45,7 +45,12 @@ class MerchantsController < ApplicationController
 
   # GET /merchants/1/edit
   def edit
-    @merchant = Merchant.find(params[:id])
+
+    if current_user.try(:isMerchantUser?)
+      @merchant = Merchant.find(current_user.merchant_id)
+    else
+      @merchant = Merchant.find(params[:id])
+    end
   end
 
   # POST /merchants

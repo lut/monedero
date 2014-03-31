@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
       redirect_to(root_path) unless current_user.admin?
     end
 
+	def adminOrMerchant_user
+	redirect_to(root_path) unless (current_user.admin? | current_user.isMerchantUser?)
+	end
+
 end

@@ -35,7 +35,7 @@
 		<ul class="list-group">
       
     <% @user.each do |key, value| %>
-        <a href="/profiles/<%= key %>" class="list-group-item"><p>Usuario <%= key %>:  <%= value %> puntos</p></a>
+        <a href="/profiles/<%= key %>" class="list-group-item"><p><%= User.find(key).email %>:  <%= value %> puntos</p></a>
     <% end %>
 </ul>
 

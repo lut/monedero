@@ -11,7 +11,16 @@
 			    <% @merchants.each do |merchant| %>
 			        <a href="/merchants/<%= merchant.id %>" class="list-group-item <%= Category.find(merchant.category_id).icon %>">
 			 		<%= merchant.name %>	
+			 		<% if merchant.category.name == "Centro Comercial" %>
+			 			<span class="badge alert-info">Mall: <%= merchant.stores.count %> tiendas</span>
+			 		<% end %>
+			 		<% if merchant.category.name == "Cadena" %>
+			 			<span class="badge alert-info"><%= merchant.stores.count %> sucursales</span>
+			 		<% end %>
+
 			        </a>
+
+
 			    <% end %>
 			</ul>
 			

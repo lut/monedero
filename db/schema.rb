@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140323012353) do
+ActiveRecord::Schema.define(:version => 20140329214903) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -69,10 +69,11 @@ ActiveRecord::Schema.define(:version => 20140323012353) do
     t.string   "twitter"
     t.string   "instagram"
     t.string   "foursquare"
-    t.integer  "months_to_expire",                                     :default => 3
+    t.integer  "days_to_expire",                                       :default => 60
     t.integer  "membership_id"
     t.boolean  "give_out_birthday_gith",                               :default => false
     t.integer  "birthday_gift"
+    t.integer  "parent_merchant_id"
   end
 
   add_index "merchants", ["category_id"], :name => "index_merchants_on_category_id"

@@ -1,5 +1,6 @@
 class CreditsController < ApplicationController
-  before_filter :adminOrMerchant_user, only: [:new, :edit, :create, :update, :destroy, :index, :show]
+  before_filter :adminOrMerchant_user, only: [:new, :create, :index]
+  before_filter :admin_user, only: [:show, :edit, :update, :destroy]
 
   def index
     if current_user.try(:admin?)
@@ -75,7 +76,7 @@ class CreditsController < ApplicationController
       when "add"
         @credit.convertion_rate = Merchant.find(@credit.merchant_id).convertion_rate
         @credit.amount = @credit.purchase_amount * @credit.convertion_rate
-        @credit.expires_on = Date.today + Merchant.find(@credit.merchant_id).months_to_expire.month
+        @credit.expires_on = Date.today + Merchant.find(@credit.merchant_id).days_to_expire
 
 
       when "remove"
@@ -91,7 +92,7 @@ class CreditsController < ApplicationController
 
             UserMailer.new_credit_email(@credit).deliver
 
-            format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos generados exitosamente. Se envio un mail de confirmacion al usuario.' }
+            format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos generados exitosamente. Se envio un mail de notificacion al usuario.' }
             format.json { render json: @credit, status: :created, location: @credit }
           else
             format.html { render action: "new" }
@@ -103,7 +104,7 @@ class CreditsController < ApplicationController
           if @credit.amount.abs <= @total_credit
             respond_to do |format|
               if @credit.save
-                format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos descontados exitosamente. Se envio un mail de confirmacion al usuario.' }
+                format.html { redirect_to profile_path(@credit.user_id), notice: 'Puntos descontados exitosamente. Se envio un mail de notificacion al usuario.' }
                 format.json { render json: @credit, status: :created, location: @credit }
               else
                 format.html { render action: "new" }
@@ -213,7 +214,7 @@ class CreditsController < ApplicationController
         @new_credit.merchant_id = merchant   
         @new_credit.credit_type = "BirthdayGift"
         @new_credit.assigned_by = "admin"
-        @new_credit.expires_on = Merchant.find(merchant).months_to_expire
+        @new_credit.expires_on = Date.today + Merchant.find(merchant).days_to_expire
 
         @new_credit.save
 
@@ -232,9 +233,6 @@ class CreditsController < ApplicationController
 
 
   private
-    def adminOrMerchant_user
-      redirect_to(root_path) unless (current_user.admin? | current_user.isMerchantUser?)
-    end
 
     def signed_in_user
       unless signed_in?

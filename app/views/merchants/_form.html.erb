@@ -22,7 +22,7 @@
 			<div class="panel-heading">Configuración de créditos</div>
 			<div class="panel-body">
 				<%= f.input :convertion_rate, label: 'Porcentaje de créditos por compra' %>
-				<%= f.input :months_to_expire, label: 'Período de vigencia (meses)' %>
+				<%= f.input :days_to_expire, label: 'Período de vigencia (días)' %>
 				<div class="page-header">Regalo en tu cumpleaños</div>
 				<%= f.input :give_out_birthday_gith, label: 'Dar regalo' %>
 				<%= f.input :birthday_gift, label: 'Cantidad (puntos)' %>
@@ -64,6 +64,13 @@
 		</div>
   	</div>
   	<div class="col-md-4">
+  		<div class="panel panel-default">
+			<div class="panel-heading">Parent Merchant</div>
+
+			<div class="panel-body">
+				<%= f.input :parent_merchant_id, collection: Merchant.all, label: "Parent Merchant" %>
+			</div>		
+		</div>
 
 
   	</div>

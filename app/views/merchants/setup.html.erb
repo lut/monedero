@@ -29,7 +29,7 @@
 			<div class="panel-heading">Configuración de créditos</div>
 			<div class="panel-body">
 				<p>Porcentaje de créditos por compra: <%= @merchant.convertion_rate * 100 %>%</p>
-				<p>Período de vigencia: <%= @merchant.months_to_expire %> meses</p>
+				<p>Período de vigencia: <%= @merchant.days_to_expire %> días</p>
 				<div class="page-header">Regalo en tu cumpleaños</div>
 				<p>Dar Regalo: <% if @merchant.give_out_birthday_gith %>Sí<% else %>No <% end %></p>
 				<p>Cantidad: <%= @merchant.birthday_gift %> </p>

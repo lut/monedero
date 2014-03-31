@@ -34,6 +34,9 @@
 			</div>
 		</div>
 
+
+
+
 <!-- Rewards List =============-->
 
 		<div class="row">
@@ -54,6 +57,9 @@
 
 <!-- My credits  =============-->
 
+<!-- Check if parent Merchant -->
+<% if not(@merchant.parent_merchant_id.nil?)  %>
+
 			<div class="col-md-8">
 				<ul class="list-group">
 					<li class="list-group-item">Puntos disponibles: 
@@ -71,7 +77,42 @@
 					<a class="list-group-item" href="/credits/all/<%= @merchant.id %>">Ver todos...</a>
 				</ul>
 			</div>
+		
+<% else %>
+		<div class="col-md-8">
+
+				<ul class="list-group">
+					<li class="list-group-item">Puntos disponibles: 
+						<span class="badge alert-info"><%= @credits_sum %></span>
+					</li>
+					<% @credits.each do |credit| %>
+					<li class="list-group-item"><%= credit.created_at.to_formatted_s(:short) %>
+						<% if credit.amount > 0  %>
+							<span class="badge alert-success"><%= credit.amount %></span>
+						<% else %>
+							<span class="badge alert-danger"><%= credit.amount %></span>
+						<% end %>
+					</li>
+					<% end %>
+					<a class="list-group-item" href="/credits/all/<%= @merchant.id %>">Ver todos...</a>
+				</ul>
+
+				<ul class="list-group">
+					<li class="list-group-item"><% if @merchant.category.name == "Cadena" %>Sucursales: <% elsif @merchant.category.name == "Centro Comercial"%> Tiendas: <% end %>   
+						<span class="badge alert-info"><%= @merchant.stores.count %></span>
+					</li>
+					<% @merchant.stores.each do |store| %>
+						<li class="list-group-item"><%= store.name %>
+					</li>
+					<% end %>
+				</ul>
+			</div>			
 		</div>
+
+
+
+
+<% end %>
 	
 </div>
 	
