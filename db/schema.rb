@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140329214903) do
+ActiveRecord::Schema.define(:version => 20140331232940) do
+
+  create_table "cards", :force => true do |t|
+    t.string   "name"
+    t.string   "logo_thumbnail"
+    t.string   "code_type"
+    t.integer  "category_id"
+    t.text     "conditions"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "logo_front"
+    t.string   "logo_back"
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -83,6 +95,14 @@ ActiveRecord::Schema.define(:version => 20140329214903) do
     t.integer  "merchant_id"
     t.string   "name"
     t.integer  "credits"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "user_cards", :force => true do |t|
+    t.integer  "card_id"
+    t.integer  "user_id"
+    t.string   "card_number"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

@@ -1,11 +1,10 @@
 Treebook::Application.routes.draw do
 
-  resources :memberships
 
 
 root to: "merchants#index"
 get 'merchants/setup', to: 'merchants#setup'
-resources :merchants, :credits, :profiles, :categories, :rewards
+resources :merchants, :credits, :profiles, :categories, :rewards, :user_cards, :cards, :memberships
 
 
 get 'qrcode/:id', to: 'qrcodes#show'
@@ -18,6 +17,8 @@ get 'myaccount', to: 'profiles#account'
 get 'create_expired_lines', to: 'credits#create_expired_lines'
 get 'stats', to: 'stats#show'
 get 'prints', to: 'prints#all'
+get 'new_user_card/:card_id', to: 'user_cards#new'
+
 
 # get 'users/:id', to: 'users#show'
 

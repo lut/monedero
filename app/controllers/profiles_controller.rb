@@ -32,6 +32,9 @@ class ProfilesController < ApplicationController
                         @credits = Credit.where(:user_id => @current_user.id)
                         @credits_count = Credit.where(:user_id => @current_user.id).count
                         @credit_per_merchant = Credit.where(:user_id => @current_user.id).group(:merchant_id).sum(:amount)
+                        
+                        @user_cards = UserCard.where(user_id: current_user.id)
+                        @user_cards_count = @user_cards.count
                 end
  
     			render action: :show

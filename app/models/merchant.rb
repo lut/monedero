@@ -13,8 +13,7 @@ class Merchant < ActiveRecord::Base
   belongs_to :membership
 
   has_many :stores, :class_name => "Merchant", :foreign_key => "parent_merchant_id"
-  belongs_to :chain, :class_name => "Merchant"
-     
+  belongs_to :chain, :class_name => "Merchant"     
 
   
 end

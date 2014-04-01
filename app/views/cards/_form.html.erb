@@ -1,0 +1,18 @@
+<%= simple_form_for(@card) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label: 'Tarjeta', required: true, as: :string %>
+    <%= f.input :category_id, collection: Category.all, required: true, label: "Categoría" %>
+    <%= f.input :logo_thumbnail, label: 'Logo Thumbnail', required: true, as: :string %>
+    <%= f.input :logo_front, label: 'Imagen Frente', required: true, as: :string %>
+    <%= f.input :logo_back, label: 'Imagen Atras', required: true, as: :string %>
+    <%= f.input :conditions, label: 'Condiciones', required: true, as: :text %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<br><br><br>

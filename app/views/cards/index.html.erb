@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+      <ul class="list-group">
+          <% if current_user.try(:admin?) %>
+            <a href="/cards/new" class="list-group-item icon-plus-sm">Crear nueva tarjeta</a>
+            <% end %>
+            
+          <% @cards.each do |card| %>
+              <a href="/new_user_card/<%= card.id %>" class="list-group-item ">
+              <%= image_tag("#{ card.logo_thumbnail}") %>
+              <%= card.name %>  
+  
+              </a>
+
+
+          <% end %>
+      </ul>
+      
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+
+
+
+<br><br><br><br><br><br><br>

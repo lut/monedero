@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
             
   # attr_accessible :title, :body
   has_many :credits
+  has_many :user_cards
   belongs_to :merchant
 
   def  full_name

@@ -6,6 +6,8 @@ class MerchantsController < ApplicationController
   
   def index
     @merchants = Merchant.all
+    @cards = Card.all
+
 
     respond_to do |format|
       format.html # index.html.erb
